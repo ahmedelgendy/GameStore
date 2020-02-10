@@ -61,11 +61,39 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width, height: 136)
+        return handleItemSize(collectionView)
     }
     
 }
+
+// MARK: - CollectionView Helper Methods
+extension SearchViewController {
+    fileprivate func handleItemSize(_ collectionView: UICollectionView) -> CGSize {
+        var itemWidth: CGFloat!
+        let orientation = UIApplication.shared.statusBarOrientation
+        let deviceType = UI_USER_INTERFACE_IDIOM()
+        if deviceType == .pad {
+            if orientation.isLandscape {
+                itemWidth = collectionView.frame.width/3
+            } else {
+               itemWidth = collectionView.frame.width/2
+            }
+        } else if deviceType == .phone {
+            itemWidth = collectionView.frame.width
+        }
+        return CGSize(width: itemWidth, height: 136)
+    }
+}
+
 
 // MARK: - UISearchResultsUpdating
 extension SearchViewController: UISearchResultsUpdating {
