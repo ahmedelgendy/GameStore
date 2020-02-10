@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F6BE123F19EAF00995123 /* ClassName.swift */; };
+		AF6F6BE423F19ED600995123 /* UITableView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F6BE323F19ED600995123 /* UITableView+register.swift */; };
+		AF6F6BE623F19F3500995123 /* UICollectionView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F6BE523F19F3500995123 /* UICollectionView+register.swift */; };
 		AF7F66B323F17662006662A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66B223F17662006662A4 /* AppDelegate.swift */; };
 		AF7F66BC23F17667006662A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AF7F66BB23F17667006662A4 /* Assets.xcassets */; };
 		AF7F66BF23F17667006662A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AF7F66BD23F17667006662A4 /* LaunchScreen.storyboard */; };
@@ -17,6 +20,8 @@
 		AF7F66E923F17779006662A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66E823F17779006662A4 /* MainViewController.swift */; };
 		AF7F66F023F17941006662A4 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */; };
 		AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */; };
+		AFDBB17D23F197DE00818917 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDBB17B23F197DE00818917 /* SearchCollectionViewCell.swift */; };
+		AFDBB17E23F197DE00818917 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFDBB17C23F197DE00818917 /* SearchCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AF6F6BE123F19EAF00995123 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
+		AF6F6BE323F19ED600995123 /* UITableView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+register.swift"; sourceTree = "<group>"; };
+		AF6F6BE523F19F3500995123 /* UICollectionView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+register.swift"; sourceTree = "<group>"; };
 		AF7F66AF23F17662006662A4 /* GamesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GamesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7F66B223F17662006662A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AF7F66BB23F17667006662A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -53,6 +61,8 @@
 		AF7F66E823F17779006662A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		AFDBB17B23F197DE00818917 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		AFDBB17C23F197DE00818917 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +105,16 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		AF6F6BE023F19E7700995123 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AF6F6BE123F19EAF00995123 /* ClassName.swift */,
+				AF6F6BE323F19ED600995123 /* UITableView+register.swift */,
+				AF6F6BE523F19F3500995123 /* UICollectionView+register.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		AF7F66A623F17662006662A4 = {
 			isa = PBXGroup;
 			children = (
@@ -121,6 +141,7 @@
 				AF0E448123F180F40011CDD9 /* App */,
 				AF0E448223F180FE0011CDD9 /* Core */,
 				AF7F66EA23F177C1006662A4 /* Features */,
+				AF6F6BE023F19E7700995123 /* Extensions */,
 				AF7F66EB23F177D8006662A4 /* Assets */,
 				AF7F66EC23F177E6006662A4 /* SupportingFiles */,
 			);
@@ -150,8 +171,10 @@
 			children = (
 				AF7F66E223F17705006662A4 /* SearchViewController.swift */,
 				AF7F66E323F17705006662A4 /* SearchViewController.xib */,
+				AFDBB17B23F197DE00818917 /* SearchCollectionViewCell.swift */,
+				AFDBB17C23F197DE00818917 /* SearchCollectionViewCell.xib */,
 			);
-			name = Search;
+			path = Search;
 			sourceTree = "<group>";
 		};
 		AF7F66E723F1773A006662A4 /* Main */ = {
@@ -169,8 +192,7 @@
 				AF7F66E623F17722006662A4 /* Search */,
 				AF7F66ED23F1791E006662A4 /* Favorites */,
 			);
-			name = Features;
-			path = Search;
+			path = Features;
 			sourceTree = "<group>";
 		};
 		AF7F66EB23F177D8006662A4 /* Assets */ = {
@@ -307,6 +329,7 @@
 				AF7F66BC23F17667006662A4 /* Assets.xcassets in Resources */,
 				AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */,
 				AF7F66E523F17705006662A4 /* SearchViewController.xib in Resources */,
+				AFDBB17E23F197DE00818917 /* SearchCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,10 +354,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFDBB17D23F197DE00818917 /* SearchCollectionViewCell.swift in Sources */,
 				AF7F66E923F17779006662A4 /* MainViewController.swift in Sources */,
 				AF7F66E423F17705006662A4 /* SearchViewController.swift in Sources */,
+				AF6F6BE423F19ED600995123 /* UITableView+register.swift in Sources */,
 				AF7F66F023F17941006662A4 /* FavoriteViewController.swift in Sources */,
 				AF7F66B323F17662006662A4 /* AppDelegate.swift in Sources */,
+				AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */,
+				AF6F6BE623F19F3500995123 /* UICollectionView+register.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
