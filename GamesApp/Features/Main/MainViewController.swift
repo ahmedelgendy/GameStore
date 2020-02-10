@@ -11,13 +11,15 @@ import UIKit
 class MainViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        tabBar.tintColor = UIColor(named: "tabbar-color")
+        tabBar.tintColor = R.color.tabbarColor()
         self.viewControllers = setupTabBarViewControllers()
     }
     
     func setupTabBarViewControllers() -> [UIViewController] {
         let searchViewController = SearchViewController()
-        searchViewController.tabBarItem = UITabBarItem(title: "Games", image: UIImage(named: "games-icon"), tag: 0)
+        searchViewController.tabBarItem = UITabBarItem(title: "Games",
+                                                       image: R.image.gamesIcon(),
+                                                       tag: 0)
         
         let favoriteViewController = FavoriteViewController()
         favoriteViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
