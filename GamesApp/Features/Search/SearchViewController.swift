@@ -12,6 +12,8 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var workItem: DispatchWorkItem?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -98,7 +100,23 @@ extension SearchViewController {
 // MARK: - UISearchResultsUpdating
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
+        
+        reload(searchController.searchBar)
+        
+    }
     
+    @objc func reload(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text, text.count > 3 else {
+            print("nothing to search")
+            return
+        }
+        workItem?.cancel()
+        
+        workItem = DispatchWorkItem(block: {})
+        
+        let requestDelay = DispatchTime.now() + TimeInterval(exactly: 0.75)!
+        let backgroundQueue = DispatchQueue.global(qos: .background)
+        backgroundQueue.asyncAfter(deadline: requestDelay, execute: workItem!)
     }
 }
 
