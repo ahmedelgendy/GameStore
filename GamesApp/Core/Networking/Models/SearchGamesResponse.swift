@@ -43,7 +43,7 @@ struct Game: Codable {
     let tags: [Tag]
     let userGame: String?
     let reviewsCount: Int?
-    let saturatedColor, dominantColor: Color?
+    let saturatedColor, dominantColor: String?
     let shortScreenshots: [ShortScreenshot]?
     let parentPlatforms: [Platform]?
     let genres: [Genre]
@@ -98,10 +98,6 @@ struct Clips: Codable {
     }
 }
 
-enum Color: String, Codable {
-    case the0F0F0F = "0f0f0f"
-}
-
 // MARK: - Genre
 struct Genre: Codable {
     let id: Int
@@ -117,16 +113,9 @@ struct Platform: Codable {
 // MARK: - Rating
 struct Rating: Codable {
     let id: Int?
-    let title: Title?
+    let title: String?
     let count: Int?
     let percent: Double?
-}
-
-enum Title: String, Codable {
-    case exceptional = "exceptional"
-    case meh = "meh"
-    case recommended = "recommended"
-    case skip = "skip"
 }
 
 // MARK: - ShortScreenshot

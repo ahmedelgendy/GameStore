@@ -137,10 +137,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 3 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
   struct nib {
     /// Nib `FavoriteViewController`.
     static let favoriteViewController = _R.nib._FavoriteViewController()
+    /// Nib `LoadingCollectionViewCell`.
+    static let loadingCollectionViewCell = _R.nib._LoadingCollectionViewCell()
     /// Nib `SearchCollectionViewCell`.
     static let searchCollectionViewCell = _R.nib._SearchCollectionViewCell()
     /// Nib `SearchViewController`.
@@ -151,6 +153,14 @@ struct R: Rswift.Validatable {
     @available(*, deprecated, message: "Use UINib(resource: R.nib.favoriteViewController) instead")
     static func favoriteViewController(_: Void = ()) -> UIKit.UINib {
       return UIKit.UINib(resource: R.nib.favoriteViewController)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "LoadingCollectionViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.loadingCollectionViewCell) instead")
+    static func loadingCollectionViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.loadingCollectionViewCell)
     }
     #endif
 
@@ -172,6 +182,10 @@ struct R: Rswift.Validatable {
 
     static func favoriteViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.favoriteViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func loadingCollectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> LoadingCollectionViewCell? {
+      return R.nib.loadingCollectionViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? LoadingCollectionViewCell
     }
 
     static func searchCollectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> SearchCollectionViewCell? {
@@ -213,6 +227,17 @@ struct _R: Rswift.Validatable {
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _LoadingCollectionViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "LoadingCollectionViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> LoadingCollectionViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? LoadingCollectionViewCell
       }
 
       fileprivate init() {}

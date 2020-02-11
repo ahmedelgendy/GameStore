@@ -7,6 +7,7 @@ target 'GamesApp' do
 
   # Pods for GamesApp
   pod 'R.swift'
+  pod 'Kingfisher', '~> 5.0'
   
 target 'GamesAppTests' do
     inherit! :search_paths

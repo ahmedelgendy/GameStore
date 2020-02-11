@@ -22,6 +22,8 @@
 		AF7F66E923F17779006662A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66E823F17779006662A4 /* MainViewController.swift */; };
 		AF7F66F023F17941006662A4 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */; };
 		AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */; };
+		AF9AE87723F2D01C00914BB5 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */; };
+		AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */; };
 		AFC8CF2623F29772005EEFD0 /* GamesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8CF2523F29772005EEFD0 /* GamesService.swift */; };
 		AFC8CF2B23F298F1005EEFD0 /* SearchGamesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8CF2A23F298F1005EEFD0 /* SearchGamesResponse.swift */; };
 		AFD5BFEE23F1AD920076D158 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5BFED23F1AD910076D158 /* R.generated.swift */; };
@@ -81,6 +83,8 @@
 		AF7F66E823F17779006662A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		AFC8CF2523F29772005EEFD0 /* GamesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesService.swift; sourceTree = "<group>"; };
 		AFC8CF2A23F298F1005EEFD0 /* SearchGamesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGamesResponse.swift; sourceTree = "<group>"; };
 		AFD5BFED23F1AD910076D158 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
@@ -202,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				AF0E448123F180F40011CDD9 /* App */,
+				AF9AE87223F2C56600914BB5 /* Shared */,
 				AF0E448223F180FE0011CDD9 /* Core */,
 				AF7F66EA23F177C1006662A4 /* Features */,
 				AF6F6BE023F19E7700995123 /* Extensions */,
@@ -284,6 +289,23 @@
 				AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		AF9AE87223F2C56600914BB5 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				AF9AE87923F2D02300914BB5 /* Cell */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		AF9AE87923F2D02300914BB5 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */,
+				AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		AFC8CF2723F29878005EEFD0 /* Games */ = {
@@ -460,6 +482,7 @@
 				AF7F66BF23F17667006662A4 /* LaunchScreen.storyboard in Resources */,
 				AF7F66BC23F17667006662A4 /* Assets.xcassets in Resources */,
 				AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */,
+				AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */,
 				AF7F66E523F17705006662A4 /* SearchViewController.xib in Resources */,
 				AFDBB17E23F197DE00818917 /* SearchCollectionViewCell.xib in Resources */,
 			);
@@ -611,6 +634,7 @@
 				AFD5C02223F293070076D158 /* URLComponents+addQuery.swift in Sources */,
 				AFDBB17D23F197DE00818917 /* SearchCollectionViewCell.swift in Sources */,
 				AFD5C02723F296EC0076D158 /* RequestPath.swift in Sources */,
+				AF9AE87723F2D01C00914BB5 /* LoadingCollectionViewCell.swift in Sources */,
 				AFD5C01623F291C20076D158 /* Networking.swift in Sources */,
 				AF7F66E923F17779006662A4 /* MainViewController.swift in Sources */,
 				AFD5C02423F295430076D158 /* AppConstants.swift in Sources */,

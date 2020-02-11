@@ -18,19 +18,35 @@ class SearchViewModel {
     weak var delegate: SearchViewModelDelegate?
     private var service: GamesServiceProtocol
     private var games = [Game]()
+    var searchKeyword: String!
+    
+    var showLoadingCell = false
+    private var page = 1
     
     init(service: GamesServiceProtocol) {
         self.service = service
     }
     
-    func search(with keyword: String) {
-        print("Searching started for \(keyword)...")
-        service.searchGames(params: SearchGamesParameters(keyword: keyword)) { (result) in
+    func resetState() {
+        games = []
+        page = 1
+        showLoadingCell = false
+    }
+    
+    func search() {
+        print("Searching started for \(String(describing: searchKeyword))...")
+        var params = SearchGamesParameters(keyword: searchKeyword)
+        params.page = page
+        service.searchGames(params: params) { (result) in
             switch result {
             case .success(let value):
                 DispatchQueue.main.async {
-                    self.games = value.results ?? []
-                    self.delegate?.onFetchCompleted(showLoadingCell: false)
+                    self.games.append(contentsOf: value.results ?? [])
+                    if let _ = value.next {
+                        self.showLoadingCell = true
+                        self.page += 1
+                    }
+                    self.delegate?.onFetchCompleted(showLoadingCell: self.showLoadingCell)
                 }
             case .failure(let error):
                 DispatchQueue.main.async {
@@ -41,8 +57,13 @@ class SearchViewModel {
         }
     }
     
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        guard showLoadingCell else { return false }
+        return indexPath.row == (numberOfItems() - 1)
+    }
+    
     func numberOfItems() -> Int {
-        return self.games.count
+        return showLoadingCell ? (self.games.count + 1) : self.games.count
     }
     
     func cellViewModelAt(index: Int) -> SearchCellViewModel {

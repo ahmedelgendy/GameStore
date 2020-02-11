@@ -9,7 +9,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var workItem: DispatchWorkItem?
@@ -29,12 +30,12 @@ class SearchViewController: UIViewController {
         viewModel.delegate = self
         setupUI()
     }
-
+    
 }
 
 // MARK: - setup ui
 extension SearchViewController {
-    func setupUI() {
+    private func setupUI() {
         setupNavigationBar()
         setupSearchBar()
         setupCollectionView()
@@ -47,18 +48,20 @@ extension SearchViewController {
     
     private func setupSearchBar() {
         let search = UISearchController(searchResultsController: nil)
-        search.searchResultsUpdater = self
+        search.searchBar.delegate = self
+        search.searchBar.placeholder = "Search for the games"
+        search.dimsBackgroundDuringPresentation = false
+        search.hidesNavigationBarDuringPresentation = false
+        search.searchBar.showsCancelButton = false
         navigationItem.searchController = search
     }
     
     private func setupCollectionView() {
         collectionView.register(cellType: SearchCollectionViewCell.self)
-        
+        collectionView.register(cellType: LoadingCollectionViewCell.self)
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
-        let layout = UICollectionViewFlowLayout()
-        collectionView.collectionViewLayout = layout
     }
     
 }
@@ -67,6 +70,7 @@ extension SearchViewController {
 extension SearchViewController: SearchViewModelDelegate {
     func onFetchCompleted(showLoadingCell: Bool) {
         collectionView.reloadData()
+        self.view.endEditing(true)
     }
     
     func onFetchFailed(reason: String) {
@@ -83,10 +87,21 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(with: SearchCollectionViewCell.self, for: indexPath)
-        let cellViewModel = viewModel.cellViewModelAt(index: indexPath.row)
-        cell.configure(viewModel: cellViewModel)
-        return cell
+        if viewModel.isLoadingCell(for: indexPath) {
+            let cell = collectionView.dequeueReusableCell(with: LoadingCollectionViewCell.self, for: indexPath)
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(with: SearchCollectionViewCell.self, for: indexPath)
+            let cellViewModel = viewModel.cellViewModelAt(index: indexPath.row)
+            cell.configure(viewModel: cellViewModel)
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if viewModel.isLoadingCell(for: indexPath) {
+            viewModel.search()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -98,7 +113,11 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return handleItemSize(collectionView)
+        if viewModel.isLoadingCell(for: indexPath) {
+            return CGSize(width: collectionView.frame.width, height: 100)
+        } else {
+            return handleItemSize(collectionView)
+        }
     }
     
 }
@@ -109,19 +128,30 @@ extension SearchViewController {
         var itemWidth: CGFloat!
         let orientation = UIApplication.shared.statusBarOrientation
         let deviceType = UI_USER_INTERFACE_IDIOM()
+        let width = collectionView.frame.width
         if deviceType == .pad {
-            if orientation.isLandscape {
-                itemWidth = collectionView.frame.width/3
-            } else {
-               itemWidth = collectionView.frame.width/2
-            }
+            itemWidth =  orientation.isLandscape ? (width/3) : (width/2)
         } else if deviceType == .phone {
-            itemWidth = collectionView.frame.width
+            itemWidth = width
         }
         return CGSize(width: itemWidth, height: 136)
     }
 }
 
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let text = searchBar.text,
+            text.count > 3 {
+            performSearch(with: text)
+        } else {
+            print("nothing to search")
+        }
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+}
 
 // MARK: - UISearchResultsUpdating
 extension SearchViewController: UISearchResultsUpdating {
@@ -135,12 +165,12 @@ extension SearchViewController: UISearchResultsUpdating {
     }
     
     func performSearch(with keyword: String) {
+        viewModel.resetState() // start with clean state
         workItem?.cancel() // cancel any pending requests
-        
         workItem = DispatchWorkItem(block: { [weak self] in
-            self?.viewModel.search(with: keyword)
+            self?.viewModel.searchKeyword = keyword
+            self?.viewModel.search()
         })
-        
         // delay added to prevent realtime requests to the network
         let requestDelay = DispatchTime.now() + TimeInterval(exactly: 0.75)!
         let backgroundQueue = DispatchQueue.global(qos: .background)

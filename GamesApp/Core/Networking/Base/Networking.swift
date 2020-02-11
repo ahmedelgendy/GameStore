@@ -29,10 +29,9 @@ public class Networking: NetworkingProtocol {
                     preconditionFailure("No Errors, but no data also!")
                 }
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                print("Before decoding: \n", String(data: data, encoding: .utf8) as Any)
+//                print("Before decoding: \n", String(data: data, encoding: .utf8) as Any)
                 let decodedObject = try decoder.decode(T.self, from: data)
-                print("After decoding: \n", decodedObject)
+//                print("After decoding: \n", decodedObject)
                 completion(.success(decodedObject))
             } catch {
                 completion(.failure(error))

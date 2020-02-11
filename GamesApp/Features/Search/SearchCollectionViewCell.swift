@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SearchCollectionViewCell: UICollectionViewCell {
     
@@ -17,13 +18,15 @@ class SearchCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
     }
 
     func configure(viewModel: SearchCellViewModel) {
         nameLabel.text = viewModel.name
         metacriticLabel.text = viewModel.metacritic
         genreLabel.text = viewModel.genres
+        imageView.kf.indicatorType = .activity
+        imageView.kf.setImage(with: viewModel.imageURL)
     }
 }
 
