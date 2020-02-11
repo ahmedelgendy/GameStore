@@ -66,7 +66,7 @@ extension SearchViewController {
 // MARK: - SearchViewModelDelegate
 extension SearchViewController: SearchViewModelDelegate {
     func onFetchCompleted(showLoadingCell: Bool) {
-        
+        collectionView.reloadData()
     }
     
     func onFetchFailed(reason: String) {
@@ -77,12 +77,15 @@ extension SearchViewController: SearchViewModelDelegate {
 
 // MARK: - UICollectionViewDelegate
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return viewModel.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(with: SearchCollectionViewCell.self, for: indexPath)
+        let cellViewModel = viewModel.cellViewModelAt(index: indexPath.row)
+        cell.configure(viewModel: cellViewModel)
         return cell
     }
     

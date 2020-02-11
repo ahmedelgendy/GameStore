@@ -16,7 +16,9 @@ class MainViewController: UITabBarController {
     }
     
     func setupTabBarViewControllers() -> [UIViewController] {
-        let searchViewController = SearchViewController(viewModel: SearchViewModel())
+        let gameService = GamesService(network: Networking())
+        let searchViewModel = SearchViewModel(service: gameService)
+        let searchViewController = SearchViewController(viewModel: searchViewModel)
         searchViewController.tabBarItem = UITabBarItem(title: "Games",
                                                        image: R.image.gamesIcon(),
                                                        tag: 0)
