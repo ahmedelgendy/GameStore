@@ -85,6 +85,12 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="244" height="95"/>
+            <connections>
+                <outlet property="genreLabel" destination="KX7-fI-IRS" id="QAZ-sq-xJr"/>
+                <outlet property="imageView" destination="xfG-Ir-PCk" id="XiI-hz-qSU"/>
+                <outlet property="metacriticLabel" destination="AFV-Do-Zxo" id="V9u-Ru-Suv"/>
+                <outlet property="nameLabel" destination="xlA-jI-5Eb" id="ylQ-Af-IJD"/>
+            </connections>
             <point key="canvasLocation" x="103" y="91"/>
         </collectionViewCell>
     </objects>
