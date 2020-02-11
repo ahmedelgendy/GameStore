@@ -23,6 +23,7 @@
 		AF7F66F023F17941006662A4 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */; };
 		AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */; };
 		AFD5BFEE23F1AD920076D158 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5BFED23F1AD910076D158 /* R.generated.swift */; };
+		AFD5C01223F28C990076D158 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFD5C01123F28C990076D158 /* SearchViewModel.swift */; };
 		AFDBB17D23F197DE00818917 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFDBB17B23F197DE00818917 /* SearchCollectionViewCell.swift */; };
 		AFDBB17E23F197DE00818917 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFDBB17C23F197DE00818917 /* SearchCollectionViewCell.xib */; };
 		BABD23F6872963ABF46B1D30 /* Pods_GamesApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B702F56F4E2241D480C74AE /* Pods_GamesApp.framework */; };
@@ -73,6 +74,7 @@
 		AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		AFD5BFED23F1AD910076D158 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		AFD5C01123F28C990076D158 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		AFDBB17B23F197DE00818917 /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFDBB17C23F197DE00818917 /* SearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		D3F1D81405CD46B4140B1D77 /* Pods-GamesApp-GamesAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GamesApp-GamesAppUITests.release.xcconfig"; path = "Target Support Files/Pods-GamesApp-GamesAppUITests/Pods-GamesApp-GamesAppUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				AF7F66E323F17705006662A4 /* SearchViewController.xib */,
 				AFDBB17B23F197DE00818917 /* SearchCollectionViewCell.swift */,
 				AFDBB17C23F197DE00818917 /* SearchCollectionViewCell.xib */,
+				AFD5C01123F28C990076D158 /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -539,6 +542,7 @@
 				AF7F66E423F17705006662A4 /* SearchViewController.swift in Sources */,
 				AF6F6BE423F19ED600995123 /* UITableView+register.swift in Sources */,
 				AF7F66F023F17941006662A4 /* FavoriteViewController.swift in Sources */,
+				AFD5C01223F28C990076D158 /* SearchViewModel.swift in Sources */,
 				AF7F66B323F17662006662A4 /* AppDelegate.swift in Sources */,
 				AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */,
 				AF6F6BE623F19F3500995123 /* UICollectionView+register.swift in Sources */,

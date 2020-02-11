@@ -12,10 +12,21 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var workItem: DispatchWorkItem?
+    private var workItem: DispatchWorkItem?
+    private var viewModel: SearchViewModel!
+    
+    init(viewModel: SearchViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
         setupUI()
     }
 
@@ -51,6 +62,18 @@ extension SearchViewController {
     }
     
 }
+
+// MARK: - SearchViewModelDelegate
+extension SearchViewController: SearchViewModelDelegate {
+    func onFetchCompleted(showLoadingCell: Bool) {
+        
+    }
+    
+    func onFetchFailed(reason: String) {
+        
+    }
+}
+
 
 // MARK: - UICollectionViewDelegate
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -100,20 +123,22 @@ extension SearchViewController {
 // MARK: - UISearchResultsUpdating
 extension SearchViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
-        reload(searchController.searchBar)
-        
+        if let text = searchController.searchBar.text,
+            text.count > 3 {
+            performSearch(with: text)
+        } else {
+            print("nothing to search")
+        }
     }
     
-    @objc func reload(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, text.count > 3 else {
-            print("nothing to search")
-            return
-        }
-        workItem?.cancel()
+    func performSearch(with keyword: String) {
+        workItem?.cancel() // cancel any pending requests
         
-        workItem = DispatchWorkItem(block: {})
+        workItem = DispatchWorkItem(block: { [weak self] in
+            self?.viewModel.search(with: keyword)
+        })
         
+        // delay added to prevent realtime requests to the network
         let requestDelay = DispatchTime.now() + TimeInterval(exactly: 0.75)!
         let backgroundQueue = DispatchQueue.global(qos: .background)
         backgroundQueue.asyncAfter(deadline: requestDelay, execute: workItem!)
