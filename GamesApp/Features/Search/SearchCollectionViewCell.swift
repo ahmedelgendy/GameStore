@@ -29,30 +29,3 @@ class SearchCollectionViewCell: UICollectionViewCell {
         imageView.kf.setImage(with: viewModel.imageURL)
     }
 }
-
-struct SearchCellViewModel {
-    private var game: Game
-    
-    init(game: Game) {
-        self.game = game
-    }
-    
-    var name: String? { game.name }
-    
-    var metacritic: String? {
-        if let metacritic = game.metacritic {
-            return "\(metacritic)"
-        } else {
-            return nil
-        }
-    }
-    
-    var imageURL: URL? {
-        return URL(string: game.backgroundImage ?? "")
-    }
-    
-    var genres: String? {
-        return game.genres.map({ $0.name }).joined(separator: " ,")
-    }
-    
-}
