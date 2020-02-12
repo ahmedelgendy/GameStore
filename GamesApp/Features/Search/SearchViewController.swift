@@ -10,7 +10,6 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private var workItem: DispatchWorkItem?
