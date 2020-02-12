@@ -21,7 +21,7 @@ class FavoriteCollectionViewCell: UICollectionViewCell {
 
     }
 
-    func configure(viewModel: SearchCellViewModel) {
+    func configure(viewModel: FavoriteCellViewModel) {
         nameLabel.text = viewModel.name
         metacriticLabel.text = viewModel.metacritic
         genreLabel.text = viewModel.genres

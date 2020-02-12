@@ -23,7 +23,8 @@ class MainViewController: UITabBarController {
                                                        image: R.image.gamesIcon(),
                                                        tag: 0)
         
-        let favoriteViewController = FavoriteViewController()
+        let favoriteViewModel = FavoriteViewModel(repository: FavoriteRepository())
+        let favoriteViewController = FavoriteViewController(viewModel: favoriteViewModel)
         favoriteViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         
         let viewControllers = [searchViewController, favoriteViewController]

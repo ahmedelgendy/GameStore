@@ -10,17 +10,31 @@ import Foundation
 
 class FavoriteCellViewModel {
     
-    private var storage: FavoriteRepositoryProtocol
+    private var repository: FavoriteRepositoryProtocol
+    private var game: GameDetails
     
-    init(storage: FavoriteRepositoryProtocol) {
-        self.storage = storage
+    init(game: GameDetails, repository: FavoriteRepositoryProtocol) {
+        self.repository = repository
+        self.game = game
     }
     
-    func favoriteItem(id: Int) {
-        storage.addItem(id: id)
+    var name: String? { game.name }
+    
+    var metacritic: String? {
+        if let metacritic = game.metacritic {
+            return "\(metacritic)"
+        } else {
+            return nil
+        }
     }
     
-    func unfavoriteItem(id: Int) {
-        storage.removeItem(id: id)
+    var imageURL: URL? {
+        return URL(string: game.backgroundImage ?? "")
     }
+    
+    var genres: String? {
+        return game.genres.map({ $0.name }).joined(separator: " ,")
+    }
+    
+    
 }

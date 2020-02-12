@@ -8,34 +8,87 @@
 
 import Foundation
 
+struct GameDetails: Codable {
+    let slug, name: String?
+    let playtime: Int?
+    let platforms: [Platform]?
+    let stores: [Store]?
+    let released: String?
+    let tba: Bool?
+    let backgroundImage: String?
+    let rating: Double?
+    let ratingTop: Int?
+    let ratings: [Rating]?
+    let ratingsCount, reviewsTextCount, added: Int?
+    let addedByStatus: AddedByStatus?
+    let metacritic: Int?
+    let suggestionsCount: Int?
+    let id: Int
+    let score: String?
+    let clip: Clip?
+    let tags: [Tag]
+    let userGame: String?
+    let reviewsCount: Int?
+    let saturatedColor, dominantColor: String?
+    let shortScreenshots: [ShortScreenshot]?
+    let parentPlatforms: [Platform]?
+    let genres: [Genre]
+    let communityRating: Int?
+
+    var storageId: String {
+        return "gameDetails+\(id)"
+    }
+}
+
 protocol FavoriteRepositoryProtocol {
-    var items: Set<Int> { get }
-    func addItem(id: Int)
-    func removeItem(id: Int)
-    func isItemFavorited(id: Int) -> Bool
+    var gamesIds: [String] { get }
+    func addGame(_ game: GameDetails)
+    func removeItem(_ game: GameDetails)
+    func getItems() -> [GameDetails]
+    func isItemFavorited(id: String) -> Bool
 }
 
 final class FavoriteRepository: FavoriteRepositoryProtocol {
     
-    let userDefaultsKey = "favoritedItems"
+    let favoritedKey = "favoritedItems"
     
-    var items: Set<Int> {
+    var gamesIds: [String] {
         get {
-            LocalStorage.getValue(for: userDefaultsKey) as? Set<Int> ?? []
+            LocalStorage.getValue(for: favoritedKey) as? [String] ?? []
         } set {
-            LocalStorage.add(value: newValue, forKey: userDefaultsKey)
+            LocalStorage.add(value: newValue, forKey: favoritedKey)
         }
     }
     
-    func addItem(id: Int) {
-        items.insert(id)
+    func getItems() -> [GameDetails] {
+        var games = [GameDetails]()
+        gamesIds.forEach { (gameId) in
+            if let gameJson = LocalStorage.getValue(for: gameId) as? Data {
+                do {
+                    let gameObject = try JSONDecoder().decode(GameDetails.self, from: gameJson)
+                    games.append(gameObject)
+                } catch { }
+            }
+        }
+        return games
     }
     
-    func removeItem(id: Int) {
-        items.remove(id)
+    func addGame(_ game: GameDetails) {
+        do {
+            let gameJson = try JSONEncoder().encode(game)
+            LocalStorage.add(value: gameJson, forKey: game.storageId)
+        } catch { }
+        if !gamesIds.contains(game.storageId) {
+            gamesIds.append(game.storageId)
+        }
     }
     
-    func isItemFavorited(id: Int) -> Bool {
-        return items.contains(id)
+    func removeItem(_ game: GameDetails) {
+        gamesIds = gamesIds.filter { $0 != game.storageId }
+        LocalStorage.remove(key: game.storageId)
+    }
+    
+    func isItemFavorited(id: String) -> Bool {
+        return gamesIds.contains(id)
     }
 }

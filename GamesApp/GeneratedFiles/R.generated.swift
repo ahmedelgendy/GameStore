@@ -105,10 +105,21 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 1 colors.
+  /// This `R.color` struct is generated, and contains static references to 2 colors.
   struct color {
+    /// Color `navigationbar-color`.
+    static let navigationbarColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "navigationbar-color")
     /// Color `tabbar-color`.
     static let tabbarColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "tabbar-color")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "navigationbar-color", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func navigationbarColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.navigationbarColor, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIColor(named: "tabbar-color", bundle: ..., traitCollection: ...)`
@@ -137,8 +148,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 4 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
   struct nib {
+    /// Nib `FavoriteCollectionViewCell`.
+    static let favoriteCollectionViewCell = _R.nib._FavoriteCollectionViewCell()
     /// Nib `FavoriteViewController`.
     static let favoriteViewController = _R.nib._FavoriteViewController()
     /// Nib `LoadingCollectionViewCell`.
@@ -147,6 +160,14 @@ struct R: Rswift.Validatable {
     static let searchCollectionViewCell = _R.nib._SearchCollectionViewCell()
     /// Nib `SearchViewController`.
     static let searchViewController = _R.nib._SearchViewController()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "FavoriteCollectionViewCell", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.favoriteCollectionViewCell) instead")
+    static func favoriteCollectionViewCell(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.favoriteCollectionViewCell)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "FavoriteViewController", in: bundle)`
@@ -179,6 +200,10 @@ struct R: Rswift.Validatable {
       return UIKit.UINib(resource: R.nib.searchViewController)
     }
     #endif
+
+    static func favoriteCollectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> FavoriteCollectionViewCell? {
+      return R.nib.favoriteCollectionViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? FavoriteCollectionViewCell
+    }
 
     static func favoriteViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.favoriteViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
@@ -221,6 +246,17 @@ struct _R: Rswift.Validatable {
 
   #if os(iOS) || os(tvOS)
   struct nib {
+    struct _FavoriteCollectionViewCell: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "FavoriteCollectionViewCell"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> FavoriteCollectionViewCell? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? FavoriteCollectionViewCell
+      }
+
+      fileprivate init() {}
+    }
+
     struct _FavoriteViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "FavoriteViewController"
