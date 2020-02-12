@@ -37,7 +37,8 @@ struct Game: Codable {
     let ratingsCount, reviewsTextCount, added: Int?
     let addedByStatus: AddedByStatus?
     let metacritic: Int?
-    let suggestionsCount, id: Int?
+    let suggestionsCount: Int?
+    let id: Int
     let score: String?
     let clip: Clip?
     let tags: [Tag]
