@@ -9,7 +9,7 @@
 import Foundation
 
 enum GamesEndpoint: EndpointProviding {
-    case search(params: SearchGamesParameters)
+    case searchGames(params: SearchGamesParameters)
     case gameDetails(gameId: Int)
 
     var urlRequest: URLRequest {
@@ -19,7 +19,7 @@ enum GamesEndpoint: EndpointProviding {
         urlComponents.path = RequestPath.games.path
 
         switch self {
-        case .search(let params):
+        case .searchGames(let params):
             urlComponents.addQuery(key: QueryKeys.search, value: params.keyword)
             urlComponents.addQuery(key: QueryKeys.page, value: "\(params.page)")
             urlComponents.addQuery(key: QueryKeys.pageSize, value: "\(params.pageSize)")

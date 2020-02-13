@@ -32,7 +32,7 @@
                     </collectionViewFlowLayout>
                 </collectionView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No game has been searched." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxb-i1-vpC">
-                    <rect key="frame" x="95.5" y="80" width="223.5" height="21"/>
+                    <rect key="frame" x="95.5" y="68" width="223.5" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                 <constraint firstItem="1vt-qc-mWA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Cle-FZ-7pq"/>
                 <constraint firstItem="jxb-i1-vpC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nsm-ZV-1G0"/>
                 <constraint firstItem="HQL-Y7-oFh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" symbolic="YES" id="poe-EG-gfU"/>
-                <constraint firstItem="jxb-i1-vpC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="36" id="rz5-VH-s1n"/>
+                <constraint firstItem="jxb-i1-vpC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="rz5-VH-s1n"/>
                 <constraint firstItem="HQL-Y7-oFh" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xfB-Ni-qhe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
