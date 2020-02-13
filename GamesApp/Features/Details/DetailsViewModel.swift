@@ -49,6 +49,14 @@ class DetailsViewModel {
         return isFavorited ? "Unfavorite" : "Favorite"
     }
     
+    var redditURL: URL? {
+        URL(string: game?.redditURL ?? "")
+    }
+    
+    var websiteURL: URL? {
+        URL(string: game?.website ?? "")
+    }
+    
     func favorite() {
         if repository.isItemFavorited(id: game.storageId) {
             repository.removeItem(game)

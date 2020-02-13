@@ -18,6 +18,8 @@ class DetailsViewController: UIViewController {
     
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var mainStackView: UIStackView!
+    @IBOutlet weak var redditButton: UIButton!
+    @IBOutlet weak var websiteButton: UIButton!
     
     private let viewModel: DetailsViewModel
     
@@ -51,9 +53,15 @@ class DetailsViewController: UIViewController {
     }
     
     @IBAction func visitRedditButtonTapped(_ sender: Any) {
+        if let url = viewModel.redditURL {
+            UIApplication.shared.open(url)
+        }
     }
     
     @IBAction func visitWebsiteButtonTapped(_ sender: Any) {
+        if let url = viewModel.websiteURL {
+            UIApplication.shared.open(url)
+        }
     }
     
 }
@@ -73,6 +81,19 @@ extension DetailsViewController: DetailsViewModelDelegate {
         activityIndicator.stopAnimating()
         favoriteButton.isEnabled = true
         favoriteButton.setTitle(viewModel.favoriteButtonTitle, for: .normal)
+        
+        if let _ = viewModel.redditURL {
+            redditButton.isEnabled = true
+        } else {
+            redditButton.isEnabled = false
+            redditButton.alpha = 0.5
+        }
+        if let _ = viewModel.websiteURL {
+            websiteButton.isEnabled = true
+        } else {
+            websiteButton.isEnabled = false
+            websiteButton.alpha = 0.5
+        }
     }
     
     func onFetchFailed(reason: String) {
