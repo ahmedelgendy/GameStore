@@ -8,10 +8,12 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, AlertDisplayer {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    
+
     lazy var search: UISearchController = {
         UISearchController(searchResultsController: nil)
     }()
@@ -42,6 +44,7 @@ extension SearchViewController {
         setupNavigationBar()
         setupSearchBar()
         setupCollectionView()
+        activityIndicator.hidesWhenStopped = true
     }
     
     private func setupNavigationBar() {
@@ -73,10 +76,21 @@ extension SearchViewController: SearchViewModelDelegate {
     func onFetchCompleted(showLoadingCell: Bool) {
         collectionView.reloadData()
         self.search.searchBar.endEditing(true)
+        if viewModel.numberOfItems() == 0 {
+            messageLabel.isHidden = false
+            messageLabel.text = "No results found"
+        } else {
+            messageLabel.isHidden = true
+        }
+        activityIndicator.stopAnimating()
     }
     
     func onFetchFailed(reason: String) {
-        
+        activityIndicator.stopAnimating()
+        let action = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            self.dismiss(animated: true)
+        }
+        displayAlert(with: "Error", message: reason, actions: [action])
     }
 }
 
@@ -170,6 +184,8 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController {
 
     func performSearch(with keyword: String) {
+        activityIndicator.startAnimating()
+        messageLabel.isHidden = true
         viewModel.resetState() // start with clean state
         workItem?.cancel() // cancel any pending requests
         workItem = DispatchWorkItem(block: { [weak self] in
