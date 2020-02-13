@@ -11,7 +11,8 @@ import UIKit
 class FavoriteViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-
+    @IBOutlet weak var messageLabel: UILabel!
+    
     private var viewModel: FavoriteViewModel
     
     init(viewModel: FavoriteViewModel){
@@ -71,15 +72,14 @@ extension FavoriteViewController {
     
 }
 
+// MARK: - FavoriteViewModelDelegate
 extension FavoriteViewController: FavoriteViewModelDelegate {
-    
     func onFetchCompleted(isEmpty: Bool) {
-        if isEmpty {
-            // TODO: ui state
-        } else {
-            collectionView.reloadData()
+        if !isEmpty {
             setTitle("Favorite (\(viewModel.numberOfItems()))")
         }
+        messageLabel.isHidden = !isEmpty
+        collectionView.reloadData()
     }
 }
 
