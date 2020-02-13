@@ -8,38 +8,6 @@
 
 import Foundation
 
-struct GameDetails: Codable {
-    let slug, name: String?
-    let playtime: Int?
-    let platforms: [Platform]?
-    let stores: [Store]?
-    let released: String?
-    let tba: Bool?
-    let backgroundImage: String?
-    let rating: Double?
-    let ratingTop: Int?
-    let ratings: [Rating]?
-    let ratingsCount, reviewsTextCount, added: Int?
-    let addedByStatus: AddedByStatus?
-    let metacritic: Int?
-    let suggestionsCount: Int?
-    let id: Int
-    let score: String?
-    let clip: Clip?
-    let tags: [Tag]
-    let userGame: String?
-    let reviewsCount: Int?
-    let saturatedColor, dominantColor: String?
-    let shortScreenshots: [ShortScreenshot]?
-    let parentPlatforms: [Platform]?
-    let genres: [Genre]
-    let communityRating: Int?
-
-    var storageId: String {
-        return "gameDetails+\(id)"
-    }
-}
-
 protocol FavoriteRepositoryProtocol {
     var gamesIds: [String] { get }
     func addGame(_ game: GameDetails)
@@ -81,14 +49,21 @@ final class FavoriteRepository: FavoriteRepositoryProtocol {
         if !gamesIds.contains(game.storageId) {
             gamesIds.append(game.storageId)
         }
+        fireObserver()
     }
     
     func removeItem(_ game: GameDetails) {
         gamesIds = gamesIds.filter { $0 != game.storageId }
         LocalStorage.remove(key: game.storageId)
+        fireObserver()
     }
     
     func isItemFavorited(id: String) -> Bool {
         return gamesIds.contains(id)
+    }
+    
+    private func fireObserver() {
+        NotificationCenter.default.post(name: .favoritedItemsUpdated,
+                                        object: nil)
     }
 }
