@@ -42,6 +42,11 @@ class DetailsViewController: UIViewController, AlertDisplayer {
         viewModel.fetchDetails()
     }
     
+    
+    @IBAction func dismissView(_ sender: UIButton) {
+        self.dismiss(animated: true)
+    }
+    
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         viewModel.favorite()
     }

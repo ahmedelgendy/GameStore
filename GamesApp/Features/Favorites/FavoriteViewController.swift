@@ -102,7 +102,6 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         let service = GamesService(network: Networking())
         let detailsViewModel = DetailsViewModel(gameId: id, service: service, favoriteRepository: FavoriteRepository())
         let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
-        detailsViewController.modalPresentationStyle = .fullScreen
         present(detailsViewController, animated: true)
     }
     

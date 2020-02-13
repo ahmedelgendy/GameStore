@@ -38,8 +38,13 @@ class WebViewController: UIViewController, WKNavigationDelegate {
         webView.loadHTMLString(htmlString, baseURL: nil)
     }
     
+    @IBAction func dismissView() {
+        self.dismiss(animated: true)
+    }
+    
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.activityIndicator.stopAnimating()
     }
+    
 
 }

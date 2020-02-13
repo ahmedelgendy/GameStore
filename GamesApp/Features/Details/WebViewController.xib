@@ -21,41 +21,70 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZBN-T8-sXw">
-                    <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                    <rect key="frame" x="0.0" y="110" width="414" height="752"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <wkWebViewConfiguration key="configuration">
                         <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-IX-rD9">
-                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
-                    <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="QN1-L1-eb5"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="gX2-6t-TLg">
                     <rect key="frame" x="197" y="438" width="20" height="20"/>
                 </activityIndicatorView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kns-th-haq">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L8N-IX-rD9">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                            <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-Gy-Aar">
+                            <rect key="frame" x="8" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="0fv-3P-DBK"/>
+                                <constraint firstAttribute="width" constant="40" id="ejx-iE-xwI"/>
+                            </constraints>
+                            <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="xmark.circle" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="medium"/>
+                            </state>
+                            <connections>
+                                <action selector="dismissView" destination="-1" eventType="touchUpInside" id="drf-7I-a74"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstItem="z4L-Gy-Aar" firstAttribute="centerY" secondItem="kns-th-haq" secondAttribute="centerY" id="24C-H5-3AY"/>
+                        <constraint firstAttribute="height" constant="50" id="L6q-ih-v8C"/>
+                        <constraint firstItem="L8N-IX-rD9" firstAttribute="leading" secondItem="kns-th-haq" secondAttribute="leading" id="LBM-1D-224"/>
+                        <constraint firstAttribute="bottom" secondItem="L8N-IX-rD9" secondAttribute="bottom" id="d9b-S5-g3X"/>
+                        <constraint firstItem="z4L-Gy-Aar" firstAttribute="leading" secondItem="kns-th-haq" secondAttribute="leading" constant="8" id="mGh-ke-bsT"/>
+                        <constraint firstItem="L8N-IX-rD9" firstAttribute="top" secondItem="kns-th-haq" secondAttribute="top" id="wmY-ah-xfR"/>
+                        <constraint firstAttribute="trailing" secondItem="L8N-IX-rD9" secondAttribute="trailing" id="zBm-41-GEa"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="ZBN-T8-sXw" secondAttribute="bottom" id="7mD-OG-J5V"/>
+                <constraint firstItem="kns-th-haq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="JAG-dU-GfS"/>
+                <constraint firstItem="kns-th-haq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Jb2-SK-SrZ"/>
                 <constraint firstItem="gX2-6t-TLg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KYp-Ju-Zkx"/>
                 <constraint firstItem="ZBN-T8-sXw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LuM-2M-x5a"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="L8N-IX-rD9" secondAttribute="trailing" id="Mch-Gr-HBJ"/>
-                <constraint firstItem="L8N-IX-rD9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="c5Z-St-Av8"/>
+                <constraint firstAttribute="trailing" secondItem="kns-th-haq" secondAttribute="trailing" id="bOQ-sg-CWj"/>
                 <constraint firstItem="gX2-6t-TLg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fe1-rj-hdz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZBN-T8-sXw" secondAttribute="trailing" id="ghi-Bf-8lh"/>
-                <constraint firstItem="L8N-IX-rD9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="miC-Zn-RT7"/>
-                <constraint firstItem="ZBN-T8-sXw" firstAttribute="top" secondItem="L8N-IX-rD9" secondAttribute="bottom" id="qul-LT-Nn7"/>
+                <constraint firstItem="ZBN-T8-sXw" firstAttribute="top" secondItem="kns-th-haq" secondAttribute="bottom" constant="16" id="ocV-IB-16R"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="132" y="106"/>
+            <point key="canvasLocation" x="131.8840579710145" y="105.80357142857143"/>
         </view>
     </objects>
+    <resources>
+        <image name="xmark.circle" catalog="system" width="64" height="60"/>
+    </resources>
 </document>
