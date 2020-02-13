@@ -28,7 +28,7 @@ struct GamesService: GamesServiceProtocol {
     }
 
     func searchGames(params: SearchGamesParameters, _ completion: @escaping (Result<SearchGamesResponse, Error>) -> Void) {
-        let endpoint = GamesEndpoint.search(params: params)
+        let endpoint = GamesEndpoint.searchGames(params: params)
         network.execute(endpoint, completion: completion)
     }
     
