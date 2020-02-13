@@ -16,15 +16,15 @@ protocol SearchViewModelDelegate: class {
 class SearchViewModel {
     
     weak var delegate: SearchViewModelDelegate?
-    private var service: GamesServiceProtocol
+    private var repository: GameRepository
     private var games = [Game]()
     var searchKeyword: String!
     
     var showLoadingCell = false
     private var page = 1
     
-    init(service: GamesServiceProtocol) {
-        self.service = service
+    init(repository: GameRepository) {
+        self.repository = repository
     }
     
     func resetState() {
@@ -37,7 +37,7 @@ class SearchViewModel {
         print("Searching started for \(String(describing: searchKeyword))...")
         var params = SearchGamesParameters(keyword: searchKeyword)
         params.page = page
-        service.searchGames(params: params) { (result) in
+        repository.searchGames(with: params) { (result) in
             switch result {
             case .success(let value):
                 DispatchQueue.main.async {

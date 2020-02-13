@@ -8,9 +8,11 @@
 
 import Foundation
 
+typealias SearchGamesCallBack = (Result<SearchGamesResponse, Error>) -> Void
+
 protocol GamesServiceProtocol {
     var network: Networking { get }
-    func searchGames(params: SearchGamesParameters, _ completion: @escaping (Result<SearchGamesResponse, Error>) -> Void)
+    func searchGames(params: SearchGamesParameters, _ completion: @escaping SearchGamesCallBack)
     func getGameDetails(id: Int, _ completion: @escaping (Result<GameDetails, Error>) -> Void)
 }
 

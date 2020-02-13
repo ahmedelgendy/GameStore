@@ -40,6 +40,7 @@
 		AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */; };
 		AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */; };
 		AF9CFD9E23F5D96C0061E3F4 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */; };
+		AF9CFDAB23F60D200061E3F4 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFDAA23F60D200061E3F4 /* GameRepository.swift */; };
 		AFB662EC23F5295500EDBC24 /* GameDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EB23F5295500EDBC24 /* GameDetails.swift */; };
 		AFB662EF23F53AB500EDBC24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EE23F53AB500EDBC24 /* GradientView.swift */; };
 		AFB662F123F5419F00EDBC24 /* String+htmlStripped.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */; };
@@ -119,6 +120,7 @@
 		AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
 		AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
+		AF9CFDAA23F60D200061E3F4 /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
 		AFB662EB23F5295500EDBC24 /* GameDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetails.swift; sourceTree = "<group>"; };
 		AFB662EE23F53AB500EDBC24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+htmlStripped.swift"; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			isa = PBXGroup;
 			children = (
 				AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */,
+				AF9CFDAA23F60D200061E3F4 /* GameRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				AFB662EC23F5295500EDBC24 /* GameDetails.swift in Sources */,
 				AFD5C02423F295430076D158 /* AppConstants.swift in Sources */,
 				AF2B789B23F43736009C1474 /* FavoriteViewModel.swift in Sources */,
+				AF9CFDAB23F60D200061E3F4 /* GameRepository.swift in Sources */,
 				AFD5C01923F292020076D158 /* EndpointProviding.swift in Sources */,
 				AFC8CF2623F29772005EEFD0 /* GamesService.swift in Sources */,
 				AF5964ED23F5217200148996 /* DetailsViewModel.swift in Sources */,

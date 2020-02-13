@@ -68,16 +68,7 @@ class DetailsViewController: UIViewController, AlertDisplayer {
         }
     }
     
-}
-
-// MARK: - DetailsViewModelDelegate
-extension DetailsViewController: DetailsViewModelDelegate {
-    
-    func onFavorited() {
-        favoriteButton.setTitle(viewModel.favoriteButtonTitle, for: .normal)
-    }
-    
-    func onFetchCompleted() {
+    fileprivate func handleUIStateAfterFetchingData() {
         imageView.kf.setImage(with: viewModel.imageURL)
         nameLabel.text = viewModel.name
         gameDescriptionLabel.text = viewModel.description?.htmlStripped
@@ -100,6 +91,20 @@ extension DetailsViewController: DetailsViewModelDelegate {
             websiteButton.isEnabled = false
             websiteButton.alpha = 0.5
         }
+    }
+    
+}
+
+// MARK: - DetailsViewModelDelegate
+extension DetailsViewController: DetailsViewModelDelegate {
+    
+    func onFavorited() {
+        favoriteButton.setTitle(viewModel.favoriteButtonTitle, for: .normal)
+    }
+    
+    func onFetchCompleted() {
+        handleUIStateAfterFetchingData()
+        
     }
     
     func onFetchFailed(reason: String) {
