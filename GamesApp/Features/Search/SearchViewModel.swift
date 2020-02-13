@@ -69,4 +69,9 @@ class SearchViewModel {
     func cellViewModelAt(index: Int) -> SearchCellViewModel {
         return SearchCellViewModel(game: self.games[index])
     }
+    
+    func gameIdAt(index: Int) -> Int {
+        self.games[index].id
+    }
+    
 }

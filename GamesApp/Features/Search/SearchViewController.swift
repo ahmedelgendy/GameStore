@@ -12,6 +12,10 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    lazy var search: UISearchController = {
+        UISearchController(searchResultsController: nil)
+    }()
+    
     private var workItem: DispatchWorkItem?
     private var viewModel: SearchViewModel!
     
@@ -46,7 +50,6 @@ extension SearchViewController {
     }
     
     private func setupSearchBar() {
-        let search = UISearchController(searchResultsController: nil)
         search.searchBar.delegate = self
         search.searchBar.placeholder = "Search for the games"
         search.dimsBackgroundDuringPresentation = false
@@ -69,7 +72,7 @@ extension SearchViewController {
 extension SearchViewController: SearchViewModelDelegate {
     func onFetchCompleted(showLoadingCell: Bool) {
         collectionView.reloadData()
-        self.view.endEditing(true)
+        self.search.searchBar.endEditing(true)
     }
     
     func onFetchFailed(reason: String) {
@@ -103,6 +106,14 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let id = viewModel.gameIdAt(index: indexPath.row)
+        let service = GamesService(network: Networking())
+        let detailsViewModel = DetailsViewModel(gameId: id, service: service, favoriteRepository: FavoriteRepository())
+        let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
+        present(detailsViewController, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
@@ -119,6 +130,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         }
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    }
 }
 
 // MARK: - CollectionView Helper Methods
@@ -139,6 +152,7 @@ extension SearchViewController {
 
 
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let text = searchBar.text,
             text.count > 3 {
@@ -147,22 +161,14 @@ extension SearchViewController: UISearchBarDelegate {
             print("nothing to search")
         }
     }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
 }
 
-// MARK: - UISearchResultsUpdating
-extension SearchViewController: UISearchResultsUpdating {
-    func updateSearchResults(for searchController: UISearchController) {
-        if let text = searchController.searchBar.text,
-            text.count > 3 {
-            performSearch(with: text)
-        } else {
-            print("nothing to search")
-        }
-    }
-    
+extension SearchViewController {
+
     func performSearch(with keyword: String) {
         viewModel.resetState() // start with clean state
         workItem?.cancel() // cancel any pending requests
