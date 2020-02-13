@@ -148,8 +148,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 5 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 6 nibs.
   struct nib {
+    /// Nib `DetailsViewController`.
+    static let detailsViewController = _R.nib._DetailsViewController()
     /// Nib `FavoriteCollectionViewCell`.
     static let favoriteCollectionViewCell = _R.nib._FavoriteCollectionViewCell()
     /// Nib `FavoriteViewController`.
@@ -160,6 +162,14 @@ struct R: Rswift.Validatable {
     static let searchCollectionViewCell = _R.nib._SearchCollectionViewCell()
     /// Nib `SearchViewController`.
     static let searchViewController = _R.nib._SearchViewController()
+
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "DetailsViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.detailsViewController) instead")
+    static func detailsViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.detailsViewController)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "FavoriteCollectionViewCell", in: bundle)`
@@ -201,6 +211,10 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    static func detailsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.detailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
     static func favoriteCollectionViewCell(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> FavoriteCollectionViewCell? {
       return R.nib.favoriteCollectionViewCell.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? FavoriteCollectionViewCell
     }
@@ -240,12 +254,36 @@ struct R: Rswift.Validatable {
 struct _R: Rswift.Validatable {
   static func validate() throws {
     #if os(iOS) || os(tvOS)
+    try nib.validate()
+    #endif
+    #if os(iOS) || os(tvOS)
     try storyboard.validate()
     #endif
   }
 
   #if os(iOS) || os(tvOS)
-  struct nib {
+  struct nib: Rswift.Validatable {
+    static func validate() throws {
+      try _DetailsViewController.validate()
+    }
+
+    struct _DetailsViewController: Rswift.NibResourceType, Rswift.Validatable {
+      let bundle = R.hostingBundle
+      let name = "DetailsViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      static func validate() throws {
+        if UIKit.UIImage(named: "xmark.circle", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'xmark.circle' is used in nib 'DetailsViewController', but couldn't be loaded.") }
+        if #available(iOS 11.0, tvOS 11.0, *) {
+        }
+      }
+
+      fileprivate init() {}
+    }
+
     struct _FavoriteCollectionViewCell: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "FavoriteCollectionViewCell"

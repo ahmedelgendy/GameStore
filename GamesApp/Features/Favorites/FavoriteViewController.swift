@@ -27,8 +27,21 @@ class FavoriteViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         viewModel.delegate = self
+        getFavoritedItems()
+        registerObservers()
+    }
+    
+    func registerObservers() {
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(getFavoritedItems),
+            name: .favoritedItemsUpdated, object: nil
+        )
+    }
+    
+    @objc func getFavoritedItems() {
         viewModel.getFavoritedItems()
     }
+
 }
 
 
@@ -82,6 +95,15 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
         let cellViewModel = viewModel.cellViewModelAt(index: indexPath.row)
         cell.configure(viewModel: cellViewModel)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let id = viewModel.gameIdAt(index: indexPath.row)
+        let service = GamesService(network: Networking())
+        let detailsViewModel = DetailsViewModel(gameId: id, service: service, favoriteRepository: FavoriteRepository())
+        let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
+        detailsViewController.modalPresentationStyle = .fullScreen
+        present(detailsViewController, animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

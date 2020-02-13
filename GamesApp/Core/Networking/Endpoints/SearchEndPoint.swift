@@ -10,7 +10,8 @@ import Foundation
 
 enum GamesEndpoint: EndpointProviding {
     case search(params: SearchGamesParameters)
-    
+    case gameDetails(gameId: Int)
+
     var urlRequest: URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = AppConstants.URL.scheme
@@ -22,6 +23,8 @@ enum GamesEndpoint: EndpointProviding {
             urlComponents.addQuery(key: QueryKeys.search, value: params.keyword)
             urlComponents.addQuery(key: QueryKeys.page, value: "\(params.page)")
             urlComponents.addQuery(key: QueryKeys.pageSize, value: "\(params.pageSize)")
+        case .gameDetails(let gameId):
+            urlComponents.path = urlComponents.path + "/\(gameId)"
         }
         return URLRequest(url: urlComponents.url!)
     }

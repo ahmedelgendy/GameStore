@@ -35,4 +35,8 @@ class FavoriteViewModel {
     func cellViewModelAt(index: Int) -> FavoriteCellViewModel {
         return FavoriteCellViewModel(game: self.games[index], repository: repository)
     }
+    
+    func gameIdAt(index: Int) -> Int {
+        self.games[index].id
+    }
 }
