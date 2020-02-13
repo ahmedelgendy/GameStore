@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailsViewController: UIViewController {
+class DetailsViewController: UIViewController, AlertDisplayer {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var imageView: UIImageView!
@@ -41,15 +41,12 @@ class DetailsViewController: UIViewController {
         viewModel.fetchDetails()
     }
     
-    @IBAction func dismissView(_ sender: Any) {
-        self.dismiss(animated: true)
-    }
-    
     @IBAction func favoriteButtonTapped(_ sender: UIButton) {
         viewModel.favorite()
     }
     
     @IBAction func readMoreButtonTapped(_ sender: Any) {
+        
     }
     
     @IBAction func visitRedditButtonTapped(_ sender: Any) {
@@ -98,6 +95,10 @@ extension DetailsViewController: DetailsViewModelDelegate {
     
     func onFetchFailed(reason: String) {
         activityIndicator.stopAnimating()
+        let action = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            self.dismiss(animated: true)
+        }
+        displayAlert(with: "Error", message: reason, actions: [action])
     }
 }
 

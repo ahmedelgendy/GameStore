@@ -33,20 +33,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FF5-Qf-gwx" userLabel="NavbarView">
                     <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gHB-eL-EUq">
-                            <rect key="frame" x="16" y="5" width="40" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="Xxn-aF-nHO"/>
-                                <constraint firstAttribute="width" constant="40" id="hNJ-Ok-ihp"/>
-                            </constraints>
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="xmark.circle" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="medium"/>
-                            </state>
-                            <connections>
-                                <action selector="dismissView:" destination="-1" eventType="touchUpInside" id="bn3-kE-TSI"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xgb-Wh-E7c">
                             <rect key="frame" x="343" y="5" width="55" height="40"/>
                             <constraints>
@@ -64,10 +50,8 @@
                     </subviews>
                     <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstItem="gHB-eL-EUq" firstAttribute="leading" secondItem="FF5-Qf-gwx" secondAttribute="leading" constant="16" id="HCl-4F-sW1"/>
                         <constraint firstAttribute="trailing" secondItem="Xgb-Wh-E7c" secondAttribute="trailing" constant="16" id="ILE-CJ-vD4"/>
                         <constraint firstAttribute="height" constant="50" id="Qj7-j8-Ja5"/>
-                        <constraint firstItem="gHB-eL-EUq" firstAttribute="centerY" secondItem="FF5-Qf-gwx" secondAttribute="centerY" id="YgM-5L-XJp"/>
                         <constraint firstItem="Xgb-Wh-E7c" firstAttribute="centerY" secondItem="FF5-Qf-gwx" secondAttribute="centerY" id="Zn5-iy-P3n"/>
                     </constraints>
                 </view>
@@ -268,7 +252,4 @@
             <point key="canvasLocation" x="131.8840579710145" y="76.339285714285708"/>
         </view>
     </objects>
-    <resources>
-        <image name="xmark.circle" catalog="system" width="64" height="60"/>
-    </resources>
 </document>

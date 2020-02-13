@@ -37,6 +37,7 @@
 		AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */; };
 		AF9AE87B23F31EAC00914BB5 /* FavoriteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87A23F31EAC00914BB5 /* FavoriteStorage.swift */; };
 		AF9AE87E23F400A300914BB5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87D23F400A300914BB5 /* LocalStorage.swift */; };
+		AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */; };
 		AFB662EC23F5295500EDBC24 /* GameDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EB23F5295500EDBC24 /* GameDetails.swift */; };
 		AFB662EF23F53AB500EDBC24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EE23F53AB500EDBC24 /* GradientView.swift */; };
 		AFB662F123F5419F00EDBC24 /* String+htmlStripped.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */; };
@@ -113,6 +114,7 @@
 		AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		AF9AE87A23F31EAC00914BB5 /* FavoriteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStorage.swift; sourceTree = "<group>"; };
 		AF9AE87D23F400A300914BB5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
 		AFB662EB23F5295500EDBC24 /* GameDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetails.swift; sourceTree = "<group>"; };
 		AFB662EE23F53AB500EDBC24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+htmlStripped.swift"; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				AFB662EE23F53AB500EDBC24 /* GradientView.swift */,
+				AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				AF9AE87E23F400A300914BB5 /* LocalStorage.swift in Sources */,
 				AF2B789923F43463009C1474 /* FavoriteCollectionViewCell.swift in Sources */,
 				AF6F6BE423F19ED600995123 /* UITableView+register.swift in Sources */,
+				AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */,
 				AF7F66F023F17941006662A4 /* FavoriteViewController.swift in Sources */,
 				AFD5C01223F28C990076D158 /* SearchViewModel.swift in Sources */,
 				AFB662F123F5419F00EDBC24 /* String+htmlStripped.swift in Sources */,
