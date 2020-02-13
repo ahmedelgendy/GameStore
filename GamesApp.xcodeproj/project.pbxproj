@@ -35,7 +35,7 @@
 		AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */; };
 		AF9AE87723F2D01C00914BB5 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */; };
 		AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */; };
-		AF9AE87B23F31EAC00914BB5 /* FavoriteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87A23F31EAC00914BB5 /* FavoriteStorage.swift */; };
+		AF9AE87B23F31EAC00914BB5 /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */; };
 		AF9AE87E23F400A300914BB5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87D23F400A300914BB5 /* LocalStorage.swift */; };
 		AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */; };
 		AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */; };
@@ -114,7 +114,7 @@
 		AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
-		AF9AE87A23F31EAC00914BB5 /* FavoriteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStorage.swift; sourceTree = "<group>"; };
+		AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
 		AF9AE87D23F400A300914BB5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
 		AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -374,7 +374,7 @@
 		AF9AE88023F4021100914BB5 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				AF9AE87A23F31EAC00914BB5 /* FavoriteStorage.swift */,
+				AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -836,7 +836,7 @@
 				AFB662F123F5419F00EDBC24 /* String+htmlStripped.swift in Sources */,
 				AF7F66B323F17662006662A4 /* AppDelegate.swift in Sources */,
 				AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */,
-				AF9AE87B23F31EAC00914BB5 /* FavoriteStorage.swift in Sources */,
+				AF9AE87B23F31EAC00914BB5 /* FavoriteRepository.swift in Sources */,
 				AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */,
 				AF6F6BE623F19F3500995123 /* UICollectionView+register.swift in Sources */,
 				AF2B789423F433E7009C1474 /* SearchCellViewModel.swift in Sources */,
