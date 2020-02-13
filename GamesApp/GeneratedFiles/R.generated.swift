@@ -148,7 +148,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.nib` struct is generated, and contains static references to 6 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 7 nibs.
   struct nib {
     /// Nib `DetailsViewController`.
     static let detailsViewController = _R.nib._DetailsViewController()
@@ -162,6 +162,8 @@ struct R: Rswift.Validatable {
     static let searchCollectionViewCell = _R.nib._SearchCollectionViewCell()
     /// Nib `SearchViewController`.
     static let searchViewController = _R.nib._SearchViewController()
+    /// Nib `WebViewController`.
+    static let webViewController = _R.nib._WebViewController()
 
     #if os(iOS) || os(tvOS)
     /// `UINib(name: "DetailsViewController", in: bundle)`
@@ -211,6 +213,14 @@ struct R: Rswift.Validatable {
     }
     #endif
 
+    #if os(iOS) || os(tvOS)
+    /// `UINib(name: "WebViewController", in: bundle)`
+    @available(*, deprecated, message: "Use UINib(resource: R.nib.webViewController) instead")
+    static func webViewController(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.webViewController)
+    }
+    #endif
+
     static func detailsViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.detailsViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
@@ -233,6 +243,10 @@ struct R: Rswift.Validatable {
 
     static func searchViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
       return R.nib.searchViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+    }
+
+    static func webViewController(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+      return R.nib.webViewController.instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
     }
 
     fileprivate init() {}
@@ -318,6 +332,17 @@ struct _R: Rswift.Validatable {
     struct _SearchViewController: Rswift.NibResourceType {
       let bundle = R.hostingBundle
       let name = "SearchViewController"
+
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView
+      }
+
+      fileprivate init() {}
+    }
+
+    struct _WebViewController: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "WebViewController"
 
       func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [UINib.OptionsKey : Any]? = nil) -> UIKit.UIView? {
         return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? UIKit.UIView

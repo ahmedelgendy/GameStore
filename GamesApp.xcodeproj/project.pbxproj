@@ -38,6 +38,8 @@
 		AF9AE87B23F31EAC00914BB5 /* FavoriteStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87A23F31EAC00914BB5 /* FavoriteStorage.swift */; };
 		AF9AE87E23F400A300914BB5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87D23F400A300914BB5 /* LocalStorage.swift */; };
 		AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */; };
+		AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */; };
+		AF9CFD9E23F5D96C0061E3F4 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */; };
 		AFB662EC23F5295500EDBC24 /* GameDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EB23F5295500EDBC24 /* GameDetails.swift */; };
 		AFB662EF23F53AB500EDBC24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EE23F53AB500EDBC24 /* GradientView.swift */; };
 		AFB662F123F5419F00EDBC24 /* String+htmlStripped.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */; };
@@ -115,6 +117,8 @@
 		AF9AE87A23F31EAC00914BB5 /* FavoriteStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteStorage.swift; sourceTree = "<group>"; };
 		AF9AE87D23F400A300914BB5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
 		AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
+		AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		AFB662EB23F5295500EDBC24 /* GameDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetails.swift; sourceTree = "<group>"; };
 		AFB662EE23F53AB500EDBC24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+htmlStripped.swift"; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				AF2B789F23F48CF8009C1474 /* DetailsViewController.swift */,
 				AF2B78A023F48CF8009C1474 /* DetailsViewController.xib */,
 				AF5964EC23F5217200148996 /* DetailsViewModel.swift */,
+				AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */,
+				AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */,
 			);
 			path = Details;
 			sourceTree = "<group>";
@@ -570,6 +576,7 @@
 				AF2B789223F433B9009C1474 /* SearchCollectionViewCell.xib in Resources */,
 				AF7F66BF23F17667006662A4 /* LaunchScreen.storyboard in Resources */,
 				AF7F66BC23F17667006662A4 /* Assets.xcassets in Resources */,
+				AF9CFD9E23F5D96C0061E3F4 /* WebViewController.xib in Resources */,
 				AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */,
 				AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */,
 				AF2B789D23F45EAC009C1474 /* FavoriteCollectionViewCell.xib in Resources */,
@@ -750,6 +757,7 @@
 				AF7F66B323F17662006662A4 /* AppDelegate.swift in Sources */,
 				AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */,
 				AF9AE87B23F31EAC00914BB5 /* FavoriteStorage.swift in Sources */,
+				AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */,
 				AF6F6BE623F19F3500995123 /* UICollectionView+register.swift in Sources */,
 				AF2B789423F433E7009C1474 /* SearchCellViewModel.swift in Sources */,
 				AF2B78A423F4921A009C1474 /* UILabelView+isTruncated.swift in Sources */,

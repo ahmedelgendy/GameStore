@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import WebKit
 
 class DetailsViewController: UIViewController, AlertDisplayer {
 
@@ -46,7 +47,8 @@ class DetailsViewController: UIViewController, AlertDisplayer {
     }
     
     @IBAction func readMoreButtonTapped(_ sender: Any) {
-        
+        let webViewController = WebViewController(htmlContent: viewModel.description)
+        present(webViewController, animated: true)
     }
     
     @IBAction func visitRedditButtonTapped(_ sender: Any) {
@@ -73,7 +75,9 @@ extension DetailsViewController: DetailsViewModelDelegate {
     func onFetchCompleted() {
         imageView.kf.setImage(with: viewModel.imageURL)
         nameLabel.text = viewModel.name
-        gameDescriptionLabel.text = viewModel.description
+        gameDescriptionLabel.text = viewModel.description?.htmlStripped
+        readMoreButton.isHidden = !gameDescriptionLabel.isTruncated
+        view.layoutIfNeeded()
         mainStackView.alpha = 1
         activityIndicator.stopAnimating()
         favoriteButton.isEnabled = true

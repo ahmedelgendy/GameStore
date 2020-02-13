@@ -38,7 +38,7 @@ class DetailsViewModel {
     }
     
     var description: String? {
-        game?.description?.htmlStripped
+        game?.description
     }
     
     var isFavorited: Bool {

@@ -10,14 +10,15 @@ import UIKit
 
 extension UILabel {
     var isTruncated: Bool {
-        guard let labelText = text else {
-            return false
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: .greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.font = self.font
+        label.text = self.text
+        label.sizeToFit()
+        if label.frame.height > self.frame.height {
+            return true
         }
-        let labelTextSize = (labelText as NSString).boundingRect(
-            with: CGSize(width: frame.size.width, height: .greatestFiniteMagnitude),
-            options: .usesLineFragmentOrigin,
-            attributes: [.font: font as Any],
-            context: nil).size
-        return labelTextSize.height > bounds.size.height
+        return false
     }
 }
