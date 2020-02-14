@@ -1,1 +1,1 @@
-# LeanScale
+# GamesStore
