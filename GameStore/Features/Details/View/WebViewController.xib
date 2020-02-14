@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="GamesApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="GameStore" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="gX2-6t-TLg" id="WoX-p4-Oz4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -62,7 +62,6 @@
                         <constraint firstAttribute="height" constant="50" id="L6q-ih-v8C"/>
                         <constraint firstItem="L8N-IX-rD9" firstAttribute="leading" secondItem="kns-th-haq" secondAttribute="leading" id="LBM-1D-224"/>
                         <constraint firstAttribute="bottom" secondItem="L8N-IX-rD9" secondAttribute="bottom" id="d9b-S5-g3X"/>
-                        <constraint firstItem="z4L-Gy-Aar" firstAttribute="leading" secondItem="kns-th-haq" secondAttribute="leading" constant="8" id="mGh-ke-bsT"/>
                         <constraint firstItem="L8N-IX-rD9" firstAttribute="top" secondItem="kns-th-haq" secondAttribute="top" id="wmY-ah-xfR"/>
                         <constraint firstAttribute="trailing" secondItem="L8N-IX-rD9" secondAttribute="trailing" id="zBm-41-GEa"/>
                     </constraints>
@@ -76,6 +75,7 @@
                 <constraint firstItem="gX2-6t-TLg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KYp-Ju-Zkx"/>
                 <constraint firstItem="ZBN-T8-sXw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LuM-2M-x5a"/>
                 <constraint firstAttribute="trailing" secondItem="kns-th-haq" secondAttribute="trailing" id="bOQ-sg-CWj"/>
+                <constraint firstItem="z4L-Gy-Aar" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="chS-uc-AJu"/>
                 <constraint firstItem="gX2-6t-TLg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fe1-rj-hdz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZBN-T8-sXw" secondAttribute="trailing" id="ghi-Bf-8lh"/>
                 <constraint firstItem="ZBN-T8-sXw" firstAttribute="top" secondItem="kns-th-haq" secondAttribute="bottom" constant="16" id="ocV-IB-16R"/>
