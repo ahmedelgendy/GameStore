@@ -10,6 +10,7 @@
 		21B088DAC0D17EF4CB2D9989 /* Pods_GameStore_GameStoreUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94AB995B30177E5C4B5358BE /* Pods_GameStore_GameStoreUITests.framework */; };
 		AD07C1DE1B9A97504445211B /* Pods_GameStoreTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42AFC7BB88448B974560798 /* Pods_GameStoreTests.framework */; };
 		AF06196923F73C9F00B0A114 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF06196823F73C9F00B0A114 /* R.generated.swift */; };
+		AF06196A23F7459D00B0A114 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2B78A023F48CF8009C1474 /* DetailsViewController.xib */; };
 		AF2B788C23F42271009C1474 /* FavoriteCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B788B23F42271009C1474 /* FavoriteCellViewModel.swift */; };
 		AF2B789023F42394009C1474 /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B788F23F42394009C1474 /* SearchCollectionViewCell.swift */; };
 		AF2B789223F433B9009C1474 /* SearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2B789123F433B9009C1474 /* SearchCollectionViewCell.xib */; };
@@ -18,7 +19,6 @@
 		AF2B789B23F43736009C1474 /* FavoriteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B789A23F43736009C1474 /* FavoriteViewModel.swift */; };
 		AF2B789D23F45EAC009C1474 /* FavoriteCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2B789523F43405009C1474 /* FavoriteCollectionViewCell.xib */; };
 		AF2B78A123F48CF8009C1474 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B789F23F48CF8009C1474 /* DetailsViewController.swift */; };
-		AF2B78A223F48CF8009C1474 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF2B78A023F48CF8009C1474 /* DetailsViewController.xib */; };
 		AF2B78A423F4921A009C1474 /* UILabelView+isTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B78A323F4921A009C1474 /* UILabelView+isTruncated.swift */; };
 		AF5964ED23F5217200148996 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5964EC23F5217200148996 /* DetailsViewModel.swift */; };
 		AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F6BE123F19EAF00995123 /* ClassName.swift */; };
@@ -679,7 +679,7 @@
 				AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */,
 				AF2B789D23F45EAC009C1474 /* FavoriteCollectionViewCell.xib in Resources */,
 				AF7F66E523F17705006662A4 /* SearchViewController.xib in Resources */,
-				AF2B78A223F48CF8009C1474 /* DetailsViewController.xib in Resources */,
+				AF06196A23F7459D00B0A114 /* DetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,8 +1029,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4G28F4E9F6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/GameStore/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1050,8 +1050,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4G28F4E9F6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/GameStore/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
