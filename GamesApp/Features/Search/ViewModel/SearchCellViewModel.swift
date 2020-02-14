@@ -30,7 +30,7 @@ struct SearchCellViewModel {
     }
     
     var genres: String? {
-        return game.genres.map({ $0.name }).joined(separator: " ,")
+        return game.genres.map({ $0.name }).joined(separator: ", ")
     }
     
     var isCellSelected: Bool {
