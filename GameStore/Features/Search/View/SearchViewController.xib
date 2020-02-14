@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="GamesApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="GameStore" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="1vt-qc-mWA" id="iXP-LS-Blk"/>
                 <outlet property="collectionView" destination="HQL-Y7-oFh" id="UFH-AZ-5fy"/>
@@ -44,13 +44,13 @@
             <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="HQL-Y7-oFh" secondAttribute="bottom" constant="20" symbolic="YES" id="3rr-tg-4EI"/>
-                <constraint firstItem="HQL-Y7-oFh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Bzl-Sp-hGf"/>
+                <constraint firstItem="HQL-Y7-oFh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Bzl-Sp-hGf"/>
                 <constraint firstItem="1vt-qc-mWA" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="CC4-7I-qAM"/>
                 <constraint firstItem="1vt-qc-mWA" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Cle-FZ-7pq"/>
                 <constraint firstItem="jxb-i1-vpC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nsm-ZV-1G0"/>
                 <constraint firstItem="HQL-Y7-oFh" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="poe-EG-gfU"/>
                 <constraint firstItem="jxb-i1-vpC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="rz5-VH-s1n"/>
-                <constraint firstItem="HQL-Y7-oFh" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xfB-Ni-qhe"/>
+                <constraint firstItem="HQL-Y7-oFh" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="xfB-Ni-qhe"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="132" y="127"/>
