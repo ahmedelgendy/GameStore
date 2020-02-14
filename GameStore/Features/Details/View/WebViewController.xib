@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="GamesApp" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="GameStore" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="gX2-6t-TLg" id="WoX-p4-Oz4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -28,7 +28,7 @@
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="gX2-6t-TLg">
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gX2-6t-TLg">
                     <rect key="frame" x="197" y="438" width="20" height="20"/>
                 </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kns-th-haq">
@@ -41,15 +41,15 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-Gy-Aar">
-                            <rect key="frame" x="8" y="5" width="40" height="40"/>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-Gy-Aar">
+                            <rect key="frame" x="8" y="9" width="32" height="32"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="0fv-3P-DBK"/>
-                                <constraint firstAttribute="width" constant="40" id="ejx-iE-xwI"/>
+                                <constraint firstAttribute="height" constant="32" id="0fv-3P-DBK"/>
+                                <constraint firstAttribute="width" constant="32" id="ejx-iE-xwI"/>
                             </constraints>
                             <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="xmark.circle" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="medium"/>
+                            <state key="normal" image="close-icon">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="medium"/>
                             </state>
                             <connections>
                                 <action selector="dismissView" destination="-1" eventType="touchUpInside" id="drf-7I-a74"/>
@@ -62,7 +62,6 @@
                         <constraint firstAttribute="height" constant="50" id="L6q-ih-v8C"/>
                         <constraint firstItem="L8N-IX-rD9" firstAttribute="leading" secondItem="kns-th-haq" secondAttribute="leading" id="LBM-1D-224"/>
                         <constraint firstAttribute="bottom" secondItem="L8N-IX-rD9" secondAttribute="bottom" id="d9b-S5-g3X"/>
-                        <constraint firstItem="z4L-Gy-Aar" firstAttribute="leading" secondItem="kns-th-haq" secondAttribute="leading" constant="8" id="mGh-ke-bsT"/>
                         <constraint firstItem="L8N-IX-rD9" firstAttribute="top" secondItem="kns-th-haq" secondAttribute="top" id="wmY-ah-xfR"/>
                         <constraint firstAttribute="trailing" secondItem="L8N-IX-rD9" secondAttribute="trailing" id="zBm-41-GEa"/>
                     </constraints>
@@ -76,6 +75,7 @@
                 <constraint firstItem="gX2-6t-TLg" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="KYp-Ju-Zkx"/>
                 <constraint firstItem="ZBN-T8-sXw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="LuM-2M-x5a"/>
                 <constraint firstAttribute="trailing" secondItem="kns-th-haq" secondAttribute="trailing" id="bOQ-sg-CWj"/>
+                <constraint firstItem="z4L-Gy-Aar" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="chS-uc-AJu"/>
                 <constraint firstItem="gX2-6t-TLg" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fe1-rj-hdz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZBN-T8-sXw" secondAttribute="trailing" id="ghi-Bf-8lh"/>
                 <constraint firstItem="ZBN-T8-sXw" firstAttribute="top" secondItem="kns-th-haq" secondAttribute="bottom" constant="16" id="ocV-IB-16R"/>
@@ -85,6 +85,6 @@
         </view>
     </objects>
     <resources>
-        <image name="xmark.circle" catalog="system" width="64" height="60"/>
+        <image name="close-icon" width="128" height="128"/>
     </resources>
 </document>

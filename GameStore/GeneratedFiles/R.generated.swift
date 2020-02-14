@@ -144,12 +144,21 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
 
-  /// This `R.image` struct is generated, and contains static references to 2 images.
+  /// This `R.image` struct is generated, and contains static references to 3 images.
   struct image {
+    /// Image `close-icon`.
+    static let closeIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "close-icon")
     /// Image `games-icon`.
     static let gamesIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "games-icon")
     /// Image `logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
+
+    #if os(iOS) || os(tvOS)
+    /// `UIImage(named: "close-icon", bundle: ..., traitCollection: ...)`
+    static func closeIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.closeIcon, compatibleWith: traitCollection)
+    }
+    #endif
 
     #if os(iOS) || os(tvOS)
     /// `UIImage(named: "games-icon", bundle: ..., traitCollection: ...)`
@@ -311,7 +320,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "x.circle", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'x.circle' is used in nib 'DetailsViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "close-icon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close-icon' is used in nib 'DetailsViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
@@ -383,7 +392,7 @@ struct _R: Rswift.Validatable {
       }
 
       static func validate() throws {
-        if UIKit.UIImage(named: "xmark.circle", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'xmark.circle' is used in nib 'WebViewController', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "close-icon", in: R.hostingBundle, compatibleWith: nil) == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'close-icon' is used in nib 'WebViewController', but couldn't be loaded.") }
         if #available(iOS 11.0, tvOS 11.0, *) {
         }
       }
