@@ -28,7 +28,7 @@
                         <wkPreferences key="preferences"/>
                     </wkWebViewConfiguration>
                 </wkWebView>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="gX2-6t-TLg">
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gX2-6t-TLg">
                     <rect key="frame" x="197" y="438" width="20" height="20"/>
                 </activityIndicatorView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kns-th-haq">
@@ -41,15 +41,15 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-Gy-Aar">
-                            <rect key="frame" x="8" y="5" width="40" height="40"/>
+                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z4L-Gy-Aar">
+                            <rect key="frame" x="8" y="9" width="32" height="32"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="0fv-3P-DBK"/>
-                                <constraint firstAttribute="width" constant="40" id="ejx-iE-xwI"/>
+                                <constraint firstAttribute="height" constant="32" id="0fv-3P-DBK"/>
+                                <constraint firstAttribute="width" constant="32" id="ejx-iE-xwI"/>
                             </constraints>
                             <color key="tintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="xmark.circle" catalog="system">
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="large" weight="medium"/>
+                            <state key="normal" image="close-icon">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="medium"/>
                             </state>
                             <connections>
                                 <action selector="dismissView" destination="-1" eventType="touchUpInside" id="drf-7I-a74"/>
@@ -85,6 +85,6 @@
         </view>
     </objects>
     <resources>
-        <image name="xmark.circle" catalog="system" width="64" height="60"/>
+        <image name="close-icon" width="128" height="128"/>
     </resources>
 </document>
