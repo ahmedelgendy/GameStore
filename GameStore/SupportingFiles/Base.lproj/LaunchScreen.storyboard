@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2lb-N7-RVK">
-                                <rect key="frame" x="107" y="302.5" width="200" height="191"/>
+                                <rect key="frame" x="107" y="352.5" width="200" height="191"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="rN2-3p-abb">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="110"/>
@@ -44,7 +44,7 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.46773330479452052" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="2lb-N7-RVK" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GRd-vy-lta"/>
-                            <constraint firstItem="2lb-N7-RVK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-50" id="UWs-9x-081"/>
+                            <constraint firstItem="2lb-N7-RVK" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="UWs-9x-081"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
