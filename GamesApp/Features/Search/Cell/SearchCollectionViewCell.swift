@@ -16,6 +16,12 @@ class SearchCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var metacriticLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     
+    override var isSelected: Bool {
+        didSet {
+            
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
 
@@ -28,4 +34,5 @@ class SearchCollectionViewCell: UICollectionViewCell {
         imageView.kf.indicatorType = .activity
         imageView.kf.setImage(with: viewModel.imageURL)
     }
+    
 }

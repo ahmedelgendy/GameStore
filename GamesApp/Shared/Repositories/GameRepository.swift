@@ -45,24 +45,3 @@ extension GameRepository {
         }
     }
 }
-
-
-// MARK: - Seen Items
-extension GameRepository {
-    var seenItems: [Int] {
-        get {
-            LocalStorage.getValue(for: "seenItems") as? [Int] ?? []
-        } set {
-            LocalStorage.add(value: newValue, forKey: "seenItems")
-        }
-    }
-    
-    func markItemAsSeen(id: Int) -> Bool {
-        seenItems.contains(id)
-    }
-    
-    func isItemSeen(id: Int) -> Bool {
-        seenItems.contains(id)
-    }
-}
-

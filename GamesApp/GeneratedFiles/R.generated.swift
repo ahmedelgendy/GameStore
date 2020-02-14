@@ -105,10 +105,12 @@ struct R: Rswift.Validatable {
   }
   #endif
 
-  /// This `R.color` struct is generated, and contains static references to 2 colors.
+  /// This `R.color` struct is generated, and contains static references to 3 colors.
   struct color {
     /// Color `navigationbar-color`.
     static let navigationbarColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "navigationbar-color")
+    /// Color `selected-cell`.
+    static let selectedCell = Rswift.ColorResource(bundle: R.hostingBundle, name: "selected-cell")
     /// Color `tabbar-color`.
     static let tabbarColor = Rswift.ColorResource(bundle: R.hostingBundle, name: "tabbar-color")
 
@@ -118,6 +120,15 @@ struct R: Rswift.Validatable {
     @available(iOS 11.0, *)
     static func navigationbarColor(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
       return UIKit.UIColor(resource: R.color.navigationbarColor, compatibleWith: traitCollection)
+    }
+    #endif
+
+    #if os(iOS) || os(tvOS)
+    /// `UIColor(named: "selected-cell", bundle: ..., traitCollection: ...)`
+    @available(tvOS 11.0, *)
+    @available(iOS 11.0, *)
+    static func selectedCell(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIColor? {
+      return UIKit.UIColor(resource: R.color.selectedCell, compatibleWith: traitCollection)
     }
     #endif
 

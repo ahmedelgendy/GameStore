@@ -10,4 +10,5 @@ import Foundation
 
 extension Notification.Name {
     static let favoritedItemsUpdated = Notification.Name("favoritedItemsUpdated")
+    static let seenItemsUpdated = Notification.Name("seenItemsUpdated")
 }

@@ -34,6 +34,18 @@ class SearchViewController: UIViewController, AlertDisplayer {
         super.viewDidLoad()
         viewModel.delegate = self
         setupUI()
+        registerObservers()
+    }
+    
+    func registerObservers() {
+           NotificationCenter.default.addObserver(
+               self, selector: #selector(updateCells),
+               name: .seenItemsUpdated, object: nil
+           )
+    }
+    
+    @objc func updateCells() {
+        collectionView.reloadData()
     }
     
 }
@@ -50,14 +62,15 @@ extension SearchViewController {
     private func setupNavigationBar() {
         title = "Games"
         navigationController?.navigationBar.prefersLargeTitles = true
+        self.definesPresentationContext = true
     }
     
     private func setupSearchBar() {
         search.searchBar.delegate = self
         search.searchBar.placeholder = "Search for the games"
         search.dimsBackgroundDuringPresentation = false
-        search.hidesNavigationBarDuringPresentation = false
-        search.searchBar.showsCancelButton = false
+        search.obscuresBackgroundDuringPresentation = false
+        search.searchBar.showsCancelButton = true
         navigationItem.searchController = search
     }
     
@@ -86,6 +99,7 @@ extension SearchViewController: SearchViewModelDelegate {
     }
     
     func onFetchFailed(reason: String) {
+        collectionView.reloadData()
         activityIndicator.stopAnimating()
         let action = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
             self.dismiss(animated: true)
@@ -110,6 +124,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let cell = collectionView.dequeueReusableCell(with: SearchCollectionViewCell.self, for: indexPath)
             let cellViewModel = viewModel.cellViewModelAt(index: indexPath.row)
             cell.configure(viewModel: cellViewModel)
+            cell.contentView.backgroundColor = cellViewModel.isCellSelected ? R.color.selectedCell() : .white
             return cell
         }
     }
@@ -176,13 +191,19 @@ extension SearchViewController: UISearchBarDelegate {
         }
     }
     
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.resetState() // start with clean state
+        collectionView.reloadData()
+        messageLabel.isHidden = false
+        messageLabel.text = "No game has been searched."
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
 }
 
 extension SearchViewController {
-
     func performSearch(with keyword: String) {
         activityIndicator.startAnimating()
         messageLabel.isHidden = true
@@ -193,7 +214,7 @@ extension SearchViewController {
             self?.viewModel.search()
         })
         // delay added to prevent realtime requests to the network
-        let requestDelay = DispatchTime.now() + TimeInterval(exactly: 0.75)!
+        let requestDelay = DispatchTime.now() + TimeInterval(exactly: 1)!
         let backgroundQueue = DispatchQueue.global(qos: .background)
         backgroundQueue.asyncAfter(deadline: requestDelay, execute: workItem!)
     }

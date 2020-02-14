@@ -74,6 +74,7 @@ class DetailsViewModel {
             case .success(let value):
                 DispatchQueue.main.async {
                     self.game = value
+                    SeenItemsRepository.markItemAsSeen(id: self.gameId)
                     self.delegate?.onFetchCompleted()
                 }
             case .failure(let error):

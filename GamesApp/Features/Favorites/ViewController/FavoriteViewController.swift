@@ -77,6 +77,8 @@ extension FavoriteViewController: FavoriteViewModelDelegate {
     func onFetchCompleted(isEmpty: Bool) {
         if !isEmpty {
             setTitle("Favorite (\(viewModel.numberOfItems()))")
+        } else {
+            setTitle("Favorite")
         }
         messageLabel.isHidden = !isEmpty
         collectionView.reloadData()

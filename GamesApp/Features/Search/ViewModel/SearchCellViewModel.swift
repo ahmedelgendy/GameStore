@@ -33,4 +33,8 @@ struct SearchCellViewModel {
         return game.genres.map({ $0.name }).joined(separator: " ,")
     }
     
+    var isCellSelected: Bool {
+        SeenItemsRepository.isItemSeen(id: game.id)
+    }
+    
 }
