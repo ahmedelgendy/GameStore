@@ -13,9 +13,9 @@ class SeenItemsRepository {
     
     private static var seenItems: [Int] {
         get {
-            LocalStorage.getValue(for: "seenItems") as? [Int] ?? []
+            CacheStorage.get(for: CacheKeys.seenItems) ?? []
         } set {
-            LocalStorage.add(value: newValue, forKey: "seenItems")
+            CacheStorage.add(value: newValue, forKey: CacheKeys.seenItems)
         }
     }
     

@@ -34,10 +34,11 @@
 		AF7F66E923F17779006662A4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66E823F17779006662A4 /* MainViewController.swift */; };
 		AF7F66F023F17941006662A4 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */; };
 		AF7F66F123F17941006662A4 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */; };
+		AF94179023F7F1A300B38C8E /* CacheKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94178F23F7F1A300B38C8E /* CacheKeys.swift */; };
 		AF9AE87723F2D01C00914BB5 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */; };
 		AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */; };
 		AF9AE87B23F31EAC00914BB5 /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */; };
-		AF9AE87E23F400A300914BB5 /* LocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87D23F400A300914BB5 /* LocalStorage.swift */; };
+		AF9AE87E23F400A300914BB5 /* CacheStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87D23F400A300914BB5 /* CacheStorage.swift */; };
 		AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */; };
 		AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */; };
 		AF9CFD9E23F5D96C0061E3F4 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */; };
@@ -120,10 +121,11 @@
 		AF7F66E823F17779006662A4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		AF7F66EE23F17941006662A4 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		AF7F66EF23F17941006662A4 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
+		AF94178F23F7F1A300B38C8E /* CacheKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheKeys.swift; sourceTree = "<group>"; };
 		AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
-		AF9AE87D23F400A300914BB5 /* LocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorage.swift; sourceTree = "<group>"; };
+		AF9AE87D23F400A300914BB5 /* CacheStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheStorage.swift; sourceTree = "<group>"; };
 		AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
 		AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
@@ -382,7 +384,8 @@
 		AF9AE87C23F4008700914BB5 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				AF9AE87D23F400A300914BB5 /* LocalStorage.swift */,
+				AF9AE87D23F400A300914BB5 /* CacheStorage.swift */,
+				AF94178F23F7F1A300B38C8E /* CacheKeys.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
@@ -845,10 +848,11 @@
 				AFD5C01923F292020076D158 /* EndpointProviding.swift in Sources */,
 				AFC8CF2623F29772005EEFD0 /* GamesService.swift in Sources */,
 				AF5964ED23F5217200148996 /* DetailsViewModel.swift in Sources */,
+				AF94179023F7F1A300B38C8E /* CacheKeys.swift in Sources */,
 				AF2B78A123F48CF8009C1474 /* DetailsViewController.swift in Sources */,
 				AF7F66E423F17705006662A4 /* SearchViewController.swift in Sources */,
 				AFC8CF2B23F298F1005EEFD0 /* SearchGamesResponse.swift in Sources */,
-				AF9AE87E23F400A300914BB5 /* LocalStorage.swift in Sources */,
+				AF9AE87E23F400A300914BB5 /* CacheStorage.swift in Sources */,
 				AF2B789923F43463009C1474 /* FavoriteCollectionViewCell.swift in Sources */,
 				AF6F6BE423F19ED600995123 /* UITableView+register.swift in Sources */,
 				AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */,
