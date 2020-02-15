@@ -17,35 +17,27 @@ protocol FavoriteRepositoryProtocol {
 }
 
 final class FavoriteRepository: FavoriteRepositoryProtocol {
-    
-    let favoritedKey = "favoritedItems"
-    
+        
     var gamesIds: [String] {
         get {
-            LocalStorage.getValue(for: favoritedKey) as? [String] ?? []
+            CacheStorage.get(for: CacheKeys.favoritedItems) ?? []
         } set {
-            LocalStorage.add(value: newValue, forKey: favoritedKey)
+            CacheStorage.add(value: newValue, forKey: CacheKeys.favoritedItems)
         }
     }
     
     func getItems() -> [GameDetails] {
         var games = [GameDetails]()
         gamesIds.forEach { (gameId) in
-            if let gameJson = LocalStorage.getValue(for: gameId) as? Data {
-                do {
-                    let gameObject = try JSONDecoder().decode(GameDetails.self, from: gameJson)
-                    games.append(gameObject)
-                } catch { }
+            if let gameJson: GameDetails = CacheStorage.get(for: gameId) {
+                games.append(gameJson)
             }
         }
         return games
     }
     
     func addGame(_ game: GameDetails) {
-        do {
-            let gameJson = try JSONEncoder().encode(game)
-            LocalStorage.add(value: gameJson, forKey: game.storageId)
-        } catch { }
+        CacheStorage.add(value: game, forKey: game.storageId)
         if !gamesIds.contains(game.storageId) {
             gamesIds.append(game.storageId)
         }
@@ -54,7 +46,7 @@ final class FavoriteRepository: FavoriteRepositoryProtocol {
     
     func removeItem(_ game: GameDetails) {
         gamesIds = gamesIds.filter { $0 != game.storageId }
-        LocalStorage.remove(key: game.storageId)
+        CacheStorage.remove(key: game.storageId)
         fireObserver()
     }
     

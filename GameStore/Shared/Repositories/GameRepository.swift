@@ -22,20 +22,16 @@ class GameRepository {
 extension GameRepository {
     func searchGames(with params: SearchGamesParameters, completion: @escaping SearchGamesCallBack) {
         let url = GamesEndpoint.searchGames(params: params).urlRequest.url?.absoluteString
-        if let data = LocalStorage.getValue(for: url!) as? Data {
-            do {
-                let model = try JSONDecoder().decode(SearchGamesResponse.self, from: data)
-                completion(.success(model))
-            } catch { }
+        if let data: SearchGamesResponse = CacheStorage.get(for: url!) {
+            completion(.success(data))
         } else {
             service.searchGames(params: params) { result in
                 switch result {
                 case .success(let value):
-                    let key = self.service.network.urlRequest.url?.absoluteString
-                    do {
-                        let json = try JSONEncoder().encode(value)
-                        LocalStorage.add(value: json , forKey: key!)
-                    } catch { }
+                    guard let key = self.service.network.urlRequest.url?.absoluteString else {
+                        fatalError()
+                    }
+                    CacheStorage.add(value: value , forKey: key)
                     completion(.success(value))
                 case .failure(let error):
                     completion(.failure(error))

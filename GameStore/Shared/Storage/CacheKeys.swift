@@ -7,3 +7,8 @@
 //
 
 import Foundation
+
+struct CacheKeys {
+    static let favoritedItems = "favoritedItems"
+    static let seenItems = "seenItems"
+}
