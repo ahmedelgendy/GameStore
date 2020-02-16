@@ -19,7 +19,7 @@ pod install
 ![High Level Architecture](https://github.com/ahmedelgendy/GamesStore/blob/master/images/class%20diagram.jpg?raw=true)
 
 
-### File Structure 
+## File Structure 
 
 ![High Level Architecture](https://github.com/ahmedelgendy/GamesStore/blob/master/images/app-structure.jpg?raw=true)
 
