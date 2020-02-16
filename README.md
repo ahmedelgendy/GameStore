@@ -3,7 +3,7 @@
 
 ## Installation
 
-After cloning the app open your terminal and use this command to install the app pods.
+After cloning the repo open your terminal and use this command to install the app pods.
 
 ```
 pod install
