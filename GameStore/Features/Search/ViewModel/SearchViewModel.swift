@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SearchViewModelDelegate: class {
-    func onFetchCompleted(showLoadingCell: Bool)
+    func onFetchCompleted(loadMoreData: Bool)
     func onFetchFailed(reason: String)
 }
 
@@ -22,7 +22,7 @@ class SearchViewModel {
     private var throttler = Throttler(delay: 0.7)
     private var searchParams = SearchGamesParameters()
 
-    var showLoadingCell = false
+    var loadMoreData = false
     
     init(repository: GameRepository) {
         self.repository = repository
@@ -31,7 +31,7 @@ class SearchViewModel {
     func resetState() {
         games = []
         searchParams.page = 1
-        showLoadingCell = false
+        loadMoreData = false
     }
     
     func startNewSearch(with keyword: String) {
@@ -54,10 +54,10 @@ class SearchViewModel {
                         self.games.append(contentsOf: value.results ?? [])
                     }
                     if let _ = value.next {
-                        self.showLoadingCell = true
+                        self.loadMoreData = true
                         self.searchParams.page += 1
                     }
-                    self.delegate?.onFetchCompleted(showLoadingCell: self.showLoadingCell)
+                    self.delegate?.onFetchCompleted(loadMoreData: self.loadMoreData)
                 case .failure(let error):
                     self.delegate?.onFetchFailed(reason: error.localizedDescription)
                 }
@@ -66,12 +66,12 @@ class SearchViewModel {
     }
     
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        guard showLoadingCell else { return false }
+        guard loadMoreData else { return false }
         return indexPath.row == (numberOfItems() - 1)
     }
     
     func numberOfItems() -> Int {
-        return showLoadingCell ? (self.games.count + 1) : self.games.count
+        return loadMoreData ? (self.games.count + 1) : self.games.count
     }
     
     func cellViewModelAt(index: Int) -> SearchCellViewModel {
