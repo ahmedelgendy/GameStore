@@ -9,7 +9,7 @@
 import Foundation
 
 protocol SearchViewModelDelegate: class {
-    func onFetchCompleted(showLoadingCell: Bool)
+    func onFetchCompleted(loadMoreData: Bool)
     func onFetchFailed(reason: String)
 }
 
@@ -20,10 +20,9 @@ class SearchViewModel {
     private var repository: GameRepository
     private var games = [Game]()
     private var throttler = Throttler(delay: 0.7)
-    private var page = 1
+    private var searchParams = SearchGamesParameters()
 
-    var searchKeyword: String!
-    var showLoadingCell = false
+    var loadMoreData = false
     
     init(repository: GameRepository) {
         self.repository = repository
@@ -31,32 +30,34 @@ class SearchViewModel {
     
     func resetState() {
         games = []
-        page = 1
-        showLoadingCell = false
+        searchParams.page = 1
+        loadMoreData = false
     }
     
     func startNewSearch(with keyword: String) {
         resetState() // start with clean state
+        searchParams.keyword = keyword
         throttler.throttle { [unowned self] in
-            self.searchKeyword = keyword
             self.search()
         }
     }
     
     func search() {
-        print("Searching started for \(String(describing: searchKeyword))...")
-        var params = SearchGamesParameters(keyword: searchKeyword)
-        params.page = page
-        repository.searchGames(with: params) { (result) in
+        print("Searching started for \(String(describing: searchParams.keyword))...")
+        repository.searchGames(with: searchParams) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
-                    self.games.append(contentsOf: value.results ?? [])
-                    if let _ = value.next {
-                        self.showLoadingCell = true
-                        self.page += 1
+                    if self.searchParams.page == 1 {
+                        self.games = value.results ?? []
+                    } else {
+                        self.games.append(contentsOf: value.results ?? [])
                     }
-                    self.delegate?.onFetchCompleted(showLoadingCell: self.showLoadingCell)
+                    if let _ = value.next {
+                        self.loadMoreData = true
+                        self.searchParams.page += 1
+                    }
+                    self.delegate?.onFetchCompleted(loadMoreData: self.loadMoreData)
                 case .failure(let error):
                     self.delegate?.onFetchFailed(reason: error.localizedDescription)
                 }
@@ -65,12 +66,12 @@ class SearchViewModel {
     }
     
     func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        guard showLoadingCell else { return false }
+        guard loadMoreData else { return false }
         return indexPath.row == (numberOfItems() - 1)
     }
     
     func numberOfItems() -> Int {
-        return showLoadingCell ? (self.games.count + 1) : self.games.count
+        return loadMoreData ? (self.games.count + 1) : self.games.count
     }
     
     func cellViewModelAt(index: Int) -> SearchCellViewModel {

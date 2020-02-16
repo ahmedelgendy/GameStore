@@ -10,6 +10,7 @@ import Foundation
 
 class Throttler {
     private var workItem: DispatchWorkItem = DispatchWorkItem(block: {})
+    private var previousRunDate: Date = .distantPast
     private let queue: DispatchQueue
     private let delay: TimeInterval
     
@@ -20,9 +21,11 @@ class Throttler {
     
     func throttle(_ block: @escaping () -> Void) {
         workItem.cancel()
-        workItem = DispatchWorkItem() {
+        workItem = DispatchWorkItem() { [weak self] in
+            self?.previousRunDate = Date()
             block()
         }
-        queue.asyncAfter(deadline: .now() + Double(delay), execute: workItem)
+        let delayInterval = previousRunDate.timeIntervalSinceNow > delay ? 0 : delay
+        queue.asyncAfter(deadline: .now() + Double(delayInterval), execute: workItem)
     }
 }

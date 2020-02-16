@@ -86,7 +86,7 @@ extension SearchViewController {
 
 // MARK: - SearchViewModelDelegate
 extension SearchViewController: SearchViewModelDelegate {
-    func onFetchCompleted(showLoadingCell: Bool) {
+    func onFetchCompleted(loadMoreData: Bool) {
         collectionView.reloadData()
         self.search.searchBar.endEditing(true)
         if viewModel.numberOfItems() == 0 {
