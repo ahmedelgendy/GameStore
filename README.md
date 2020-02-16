@@ -1,4 +1,4 @@
-# GamesStore
+# GameStore
 
 
 ## Installation
