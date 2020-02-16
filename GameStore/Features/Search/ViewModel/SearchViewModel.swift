@@ -65,11 +65,6 @@ class SearchViewModel {
         }
     }
     
-    func isLoadingCell(for indexPath: IndexPath) -> Bool {
-        guard loadMoreData else { return false }
-        return indexPath.row == (numberOfItems() - 1)
-    }
-    
     func numberOfItems() -> Int {
         return loadMoreData ? (self.games.count + 1) : self.games.count
     }

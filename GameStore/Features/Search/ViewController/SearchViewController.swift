@@ -110,14 +110,14 @@ extension SearchViewController: SearchViewModelDelegate {
 
 
 // MARK: - UICollectionViewDelegate
-extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.numberOfItems()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if viewModel.isLoadingCell(for: indexPath) {
+        if isLoadingCell(for: indexPath) {
             let cell = collectionView.dequeueReusableCell(with: LoadingCollectionViewCell.self, for: indexPath)
             return cell
         } else {
@@ -130,7 +130,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if viewModel.isLoadingCell(for: indexPath) {
+        if isLoadingCell(for: indexPath) {
             viewModel.search()
         }
     }
@@ -142,7 +142,10 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
         present(detailsViewController, animated: true)
     }
-    
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
@@ -152,19 +155,18 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if viewModel.isLoadingCell(for: indexPath) {
+        if isLoadingCell(for: indexPath) {
             return CGSize(width: collectionView.frame.width, height: 100)
         } else {
             return handleItemSize(collectionView)
         }
     }
-    
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-    }
 }
+
 
 // MARK: - CollectionView Helper Methods
 extension SearchViewController {
+    
     fileprivate func handleItemSize(_ collectionView: UICollectionView) -> CGSize {
         var itemWidth: CGFloat!
         let orientation = UIApplication.shared.statusBarOrientation
@@ -177,9 +179,14 @@ extension SearchViewController {
         }
         return CGSize(width: itemWidth, height: 136)
     }
+    
+    func isLoadingCell(for indexPath: IndexPath) -> Bool {
+        guard viewModel.loadMoreData else { return false }
+        return indexPath.row == (viewModel.numberOfItems() - 1)
+     }
 }
 
-
+// MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
