@@ -102,7 +102,9 @@ extension FavoriteViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = viewModel.gameIdAt(index: indexPath.row)
         let service = GamesService(network: Networking())
-        let detailsViewModel = DetailsViewModel(gameId: id, service: service, favoriteRepository: FavoriteRepository())
+        let cache = CacheStorage()
+        let repository = GameRepository(service: service, storage: cache)
+        let detailsViewModel = DetailsViewModel(gameId: id, repository: repository, favoriteRepository: FavoriteRepository(storage: cache), seenItemsRepository: SeenItemsRepository(storage: cache))
         let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
         present(detailsViewController, animated: true)
     }

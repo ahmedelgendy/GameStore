@@ -17,15 +17,18 @@ protocol DetailsViewModelDelegate: class {
 class DetailsViewModel {
     
     weak var delegate: DetailsViewModelDelegate?
-    
-    private var repository: FavoriteRepositoryProtocol
+    private var favoriteRepository: FavoriteRepositoryProtocol
+    private var seenItemsRepository: SeenItemsRepositoryProtocol
     private var game: GameDetails!
-    private var service: GamesServiceProtocol
+    private var repository: GameRepository
     private var gameId: Int!
     
-    init(gameId: Int, service: GamesServiceProtocol, favoriteRepository: FavoriteRepositoryProtocol) {
-        self.repository = favoriteRepository
-        self.service = service
+    init(gameId: Int, repository: GameRepository,
+         favoriteRepository: FavoriteRepositoryProtocol,
+         seenItemsRepository: SeenItemsRepositoryProtocol) {
+        self.favoriteRepository = favoriteRepository
+        self.seenItemsRepository = seenItemsRepository
+        self.repository = repository
         self.gameId = gameId
     }
     
@@ -42,7 +45,7 @@ class DetailsViewModel {
     }
     
     var isFavorited: Bool {
-        repository.isItemFavorited(id: game.storageId)
+        favoriteRepository.isItemFavorited(id: game.storageId)
     }
     
     var favoriteButtonTitle: String {
@@ -58,10 +61,10 @@ class DetailsViewModel {
     }
     
     func favorite() {
-        if repository.isItemFavorited(id: game.storageId) {
-            repository.removeItem(game)
+        if favoriteRepository.isItemFavorited(id: game.storageId) {
+            favoriteRepository.removeItem(game)
         } else {
-            repository.addGame(game)
+            favoriteRepository.addGame(game)
         }
         DispatchQueue.main.async {
             self.delegate?.onFavorited()
@@ -69,16 +72,14 @@ class DetailsViewModel {
     }
     
     func fetchDetails() {
-        service.getGameDetails(id: gameId) { (result) in
-            switch result {
-            case .success(let value):
-                DispatchQueue.main.async {
+        repository.getGameDetails(id: gameId) { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
                     self.game = value
-                    SeenItemsRepository.markItemAsSeen(id: self.gameId)
+                    self.seenItemsRepository.markItemAsSeen(id: self.gameId)
                     self.delegate?.onFetchCompleted()
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+                case .failure(let error):
                     self.delegate?.onFetchFailed(reason: error.localizedDescription)
                 }
             }
