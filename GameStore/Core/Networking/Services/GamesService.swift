@@ -17,7 +17,7 @@ protocol GamesServiceProtocol {
 }
 
 struct SearchGamesParameters {
-    var keyword: String
+    var keyword: String = ""
     var page = 1
     var pageSize = 10
 }
