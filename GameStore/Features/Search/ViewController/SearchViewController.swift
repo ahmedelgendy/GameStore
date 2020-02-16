@@ -185,7 +185,10 @@ extension SearchViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let text = searchBar.text,
             text.count > 3 {
-            performSearch(with: text)
+            activityIndicator.startAnimating()
+            messageLabel.isHidden = true
+            viewModel.startNewSearch(with: text)
+            collectionView.reloadData()
         } else {
             print("nothing to search")
         }
@@ -202,22 +205,3 @@ extension SearchViewController: UISearchBarDelegate {
         view.endEditing(true)
     }
 }
-
-extension SearchViewController {
-    func performSearch(with keyword: String) {
-        activityIndicator.startAnimating()
-        messageLabel.isHidden = true
-        viewModel.resetState() // start with clean state
-        workItem?.cancel() // cancel any pending requests
-        workItem = DispatchWorkItem(block: { [weak self] in
-            self?.viewModel.searchKeyword = keyword
-            self?.viewModel.search()
-        })
-        // delay added to prevent realtime requests to the network
-        let requestDelay = DispatchTime.now() + TimeInterval(exactly: 1)!
-        let backgroundQueue = DispatchQueue.global(qos: .background)
-        backgroundQueue.asyncAfter(deadline: requestDelay, execute: workItem!)
-    }
-}
-
-

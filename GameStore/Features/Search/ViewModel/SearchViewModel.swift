@@ -16,12 +16,14 @@ protocol SearchViewModelDelegate: class {
 class SearchViewModel {
     
     weak var delegate: SearchViewModelDelegate?
+
     private var repository: GameRepository
     private var games = [Game]()
-    var searchKeyword: String!
-    
-    var showLoadingCell = false
+    private var throttler = Throttler(delay: 0.7)
     private var page = 1
+
+    var searchKeyword: String!
+    var showLoadingCell = false
     
     init(repository: GameRepository) {
         self.repository = repository
@@ -33,25 +35,30 @@ class SearchViewModel {
         showLoadingCell = false
     }
     
+    func startNewSearch(with keyword: String) {
+        resetState() // start with clean state
+        throttler.throttle { [unowned self] in
+            self.searchKeyword = keyword
+            self.search()
+        }
+    }
+    
     func search() {
         print("Searching started for \(String(describing: searchKeyword))...")
         var params = SearchGamesParameters(keyword: searchKeyword)
         params.page = page
         repository.searchGames(with: params) { (result) in
-            switch result {
-            case .success(let value):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let value):
                     self.games.append(contentsOf: value.results ?? [])
                     if let _ = value.next {
                         self.showLoadingCell = true
                         self.page += 1
                     }
                     self.delegate?.onFetchCompleted(showLoadingCell: self.showLoadingCell)
-                }
-            case .failure(let error):
-                DispatchQueue.main.async {
+                case .failure(let error):
                     self.delegate?.onFetchFailed(reason: error.localizedDescription)
-                    print(error)
                 }
             }
         }

@@ -21,6 +21,7 @@
 		AF2B78A123F48CF8009C1474 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B789F23F48CF8009C1474 /* DetailsViewController.swift */; };
 		AF2B78A423F4921A009C1474 /* UILabelView+isTruncated.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF2B78A323F4921A009C1474 /* UILabelView+isTruncated.swift */; };
 		AF5964ED23F5217200148996 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5964EC23F5217200148996 /* DetailsViewModel.swift */; };
+		AF64993F23F9490200A28332 /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF64993E23F9490200A28332 /* Throttler.swift */; };
 		AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F6BE123F19EAF00995123 /* ClassName.swift */; };
 		AF6F6BE423F19ED600995123 /* UITableView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F6BE323F19ED600995123 /* UITableView+register.swift */; };
 		AF6F6BE623F19F3500995123 /* UICollectionView+register.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF6F6BE523F19F3500995123 /* UICollectionView+register.swift */; };
@@ -102,6 +103,7 @@
 		AF2B78A023F48CF8009C1474 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		AF2B78A323F4921A009C1474 /* UILabelView+isTruncated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabelView+isTruncated.swift"; sourceTree = "<group>"; };
 		AF5964EC23F5217200148996 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		AF64993E23F9490200A28332 /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		AF6F6BE123F19EAF00995123 /* ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassName.swift; sourceTree = "<group>"; };
 		AF6F6BE323F19ED600995123 /* UITableView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+register.swift"; sourceTree = "<group>"; };
 		AF6F6BE523F19F3500995123 /* UICollectionView+register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+register.swift"; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 				AF9AE88023F4021100914BB5 /* Repositories */,
 				AF9AE87C23F4008700914BB5 /* Storage */,
 				AF9AE87923F2D02300914BB5 /* Cell */,
+				AF64993E23F9490200A28332 /* Throttler.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				AF9CFDAB23F60D200061E3F4 /* GameRepository.swift in Sources */,
 				AFD5C01923F292020076D158 /* EndpointProviding.swift in Sources */,
 				AFC8CF2623F29772005EEFD0 /* GamesService.swift in Sources */,
+				AF64993F23F9490200A28332 /* Throttler.swift in Sources */,
 				AF5964ED23F5217200148996 /* DetailsViewModel.swift in Sources */,
 				AF94179023F7F1A300B38C8E /* CacheKeys.swift in Sources */,
 				AF2B78A123F48CF8009C1474 /* DetailsViewController.swift in Sources */,
