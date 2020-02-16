@@ -1,10 +1,20 @@
 # GamesStore
 
-### High Level Architecture
+
+## Installation
+
+After cloning the app open your terminal and use this command to install the app pods.
+
+```
+pod install
+```
+
+
+## High Level Architecture
 
 ![High Level Architecture](https://github.com/ahmedelgendy/GamesStore/blob/master/images/block.jpg?raw=true)
 
-### Class Diagram
+## Class Diagram
 
 ![High Level Architecture](https://github.com/ahmedelgendy/GamesStore/blob/master/images/class%20diagram.jpg?raw=true)
 
@@ -15,7 +25,7 @@
 
 
 
-### Notes
+## Notes
 
 * MVVM is used as UI Design Pattern, It’s more testable in comparison to the MVC design pattern.
 * I added a new layer for repositories which is responsible for fetching data from different sources (Services, Cache, Storage), that lets the rest of the app retrieve the data easily.
