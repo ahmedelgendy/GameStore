@@ -138,7 +138,14 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let id = viewModel.gameIdAt(index: indexPath.row)
         let service = GamesService(network: Networking())
-        let detailsViewModel = DetailsViewModel(gameId: id, service: service, favoriteRepository: FavoriteRepository())
+        let cache = CacheStorage()
+        let gameRepository = GameRepository(service: service, storage: cache)
+        let seenRepository = SeenItemsRepository(storage: cache)
+        let favoriteRepository = FavoriteRepository(storage: cache)
+        let detailsViewModel = DetailsViewModel(gameId: id,
+                                                repository: gameRepository,
+                                                favoriteRepository: favoriteRepository,
+                                                seenItemsRepository: seenRepository)
         let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
         present(detailsViewController, animated: true)
     }

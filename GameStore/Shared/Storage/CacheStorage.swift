@@ -8,16 +8,22 @@
 
 import Foundation
 
-class CacheStorage {
+protocol Storage {
+    func add<T: Codable>(value: T, forKey key: String)
+    func value<T: Codable>(for key: String) -> T?
+    func remove(key: String)
+}
+
+class CacheStorage: Storage {
     
-    static func add<T: Codable>(value: T, forKey key: String) {
+    func add<T: Codable>(value: T, forKey key: String) {
         do {
             let data = try JSONEncoder().encode(value)
             UserDefaults.standard.set(data, forKey: key)
         } catch { }
     }
     
-    static func get<T: Codable>(for key: String) -> T? {
+    func value<T: Codable>(for key: String) -> T? {
         do {
             if let data = UserDefaults.standard.value(forKey: key) as? Data {
                 return try JSONDecoder().decode(T.self, from: data)
@@ -26,7 +32,7 @@ class CacheStorage {
         return nil
     }
     
-    static func remove(key: String) {
+    func remove(key: String) {
         UserDefaults.standard.removeObject(forKey: key)
     }
     

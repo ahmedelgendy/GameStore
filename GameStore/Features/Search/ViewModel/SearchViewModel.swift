@@ -70,7 +70,8 @@ class SearchViewModel {
     }
     
     func cellViewModelAt(index: Int) -> SearchCellViewModel {
-        return SearchCellViewModel(game: self.games[index])
+        return SearchCellViewModel(game: self.games[index],
+                                   seenItemsRepository: SeenItemsRepository(storage: CacheStorage()))
     }
     
     func gameIdAt(index: Int) -> Int {

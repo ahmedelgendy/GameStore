@@ -17,13 +17,14 @@ class MainViewController: UITabBarController {
     
     func setupTabBarViewControllers() -> [UIViewController] {
         let gameService = GamesService(network: Networking())
-        let searchViewModel = SearchViewModel(repository: GameRepository(service: gameService))
+        let cache = CacheStorage()
+        let searchViewModel = SearchViewModel(repository: GameRepository(service: gameService, storage: cache))
         let searchViewController = SearchViewController(viewModel: searchViewModel)
         searchViewController.tabBarItem = UITabBarItem(title: "Games",
                                                        image: R.image.gamesIcon(),
                                                        tag: 0)
         
-        let favoriteViewModel = FavoriteViewModel(repository: FavoriteRepository())
+        let favoriteViewModel = FavoriteViewModel(repository: FavoriteRepository(storage: cache))
         let favoriteViewController = FavoriteViewController(viewModel: favoriteViewModel)
         favoriteViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         

@@ -8,29 +8,40 @@
 
 import Foundation
 
+protocol SeenItemsRepositoryProtocol {
+    func markItemAsSeen(id: Int)
+    func isItemSeen(id: Int) -> Bool 
+}
+
 // MARK: - Seen Items
-class SeenItemsRepository {
+class SeenItemsRepository: SeenItemsRepositoryProtocol {
     
-    private static var seenItems: [Int] {
+    private var storage: Storage
+    
+    init(storage: Storage) {
+        self.storage = storage
+    }
+    
+    private var seenItems: [Int] {
         get {
-            CacheStorage.get(for: CacheKeys.seenItems) ?? []
+            storage.value(for: CacheKeys.seenItems) ?? []
         } set {
-            CacheStorage.add(value: newValue, forKey: CacheKeys.seenItems)
+            storage.add(value: newValue, forKey: CacheKeys.seenItems)
         }
     }
     
-    static func markItemAsSeen(id: Int){
+    func markItemAsSeen(id: Int){
         if !isItemSeen(id: id) {
             seenItems.append(id)
             fireObserver()
         }
     }
     
-    static func isItemSeen(id: Int) -> Bool {
+    func isItemSeen(id: Int) -> Bool {
         seenItems.contains(id)
     }
     
-    private static func fireObserver() {
+    private func fireObserver() {
         NotificationCenter.default.post(name: .seenItemsUpdated,
                                         object: nil)
     }

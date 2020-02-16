@@ -9,10 +9,14 @@
 import Foundation
 
 struct SearchCellViewModel {
-    private var game: Game
     
-    init(game: Game) {
+    private var game: Game
+    private var seenItemsRepository: SeenItemsRepositoryProtocol
+    
+    init(game: Game,
+         seenItemsRepository: SeenItemsRepositoryProtocol) {
         self.game = game
+        self.seenItemsRepository = seenItemsRepository
     }
     
     var name: String? { game.name }
@@ -34,7 +38,7 @@ struct SearchCellViewModel {
     }
     
     var isCellSelected: Bool {
-        SeenItemsRepository.isItemSeen(id: game.id)
+        return seenItemsRepository.isItemSeen(id: game.id)
     }
     
 }
