@@ -20,9 +20,8 @@ class SearchViewModel {
     private var repository: GameRepository
     private var games = [Game]()
     private var throttler = Throttler(delay: 0.7)
-    private var page = 1
+    private var searchParams = SearchGamesParameters()
 
-    var searchKeyword: String!
     var showLoadingCell = false
     
     init(repository: GameRepository) {
@@ -31,30 +30,32 @@ class SearchViewModel {
     
     func resetState() {
         games = []
-        page = 1
+        searchParams.page = 1
         showLoadingCell = false
     }
     
     func startNewSearch(with keyword: String) {
         resetState() // start with clean state
+        searchParams.keyword = keyword
         throttler.throttle { [unowned self] in
-            self.searchKeyword = keyword
             self.search()
         }
     }
     
     func search() {
-        print("Searching started for \(String(describing: searchKeyword))...")
-        var params = SearchGamesParameters(keyword: searchKeyword)
-        params.page = page
-        repository.searchGames(with: params) { (result) in
+        print("Searching started for \(String(describing: searchParams.keyword))...")
+        repository.searchGames(with: searchParams) { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let value):
-                    self.games.append(contentsOf: value.results ?? [])
+                    if self.searchParams.page == 1 {
+                        self.games = value.results ?? []
+                    } else {
+                        self.games.append(contentsOf: value.results ?? [])
+                    }
                     if let _ = value.next {
                         self.showLoadingCell = true
-                        self.page += 1
+                        self.searchParams.page += 1
                     }
                     self.delegate?.onFetchCompleted(showLoadingCell: self.showLoadingCell)
                 case .failure(let error):
