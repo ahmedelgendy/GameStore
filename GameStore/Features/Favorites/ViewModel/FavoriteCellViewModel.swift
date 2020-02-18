@@ -10,10 +10,10 @@ import Foundation
 
 class FavoriteCellViewModel {
     
-    private var repository: FavoriteRepositoryProtocol
+    private var repository: GameRepositoryProtocol
     private var game: GameDetails
     
-    init(game: GameDetails, repository: FavoriteRepositoryProtocol) {
+    init(game: GameDetails, repository: GameRepositoryProtocol) {
         self.repository = repository
         self.game = game
     }
