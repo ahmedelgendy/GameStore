@@ -11,12 +11,11 @@ import Foundation
 struct SearchCellViewModel {
     
     private var game: Game
-    private var seenItemsRepository: SeenItemsRepositoryProtocol
+    private var repository: GameRepositoryProtocol
     
-    init(game: Game,
-         seenItemsRepository: SeenItemsRepositoryProtocol) {
+    init(game: Game, repository: GameRepositoryProtocol) {
         self.game = game
-        self.seenItemsRepository = seenItemsRepository
+        self.repository = repository
     }
     
     var name: String? { game.name }
@@ -37,8 +36,8 @@ struct SearchCellViewModel {
         return game.genres.map({ $0.name }).joined(separator: ", ")
     }
     
-    var isCellSelected: Bool {
-        return seenItemsRepository.isItemSeen(id: game.id)
+    var isGameSeen: Bool {
+        return repository.isSeen(id: game.id)
     }
     
 }

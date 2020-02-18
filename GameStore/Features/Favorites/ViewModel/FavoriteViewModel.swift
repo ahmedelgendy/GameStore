@@ -17,14 +17,14 @@ class FavoriteViewModel {
     weak var delegate: FavoriteViewModelDelegate?
     private var games = [GameDetails]()
         
-    private var repository: FavoriteRepositoryProtocol
+    private var repository: GameRepositoryProtocol
     
-    init(repository: FavoriteRepositoryProtocol) {
+    init(repository: GameRepositoryProtocol) {
         self.repository = repository
     }
     
     func getFavoritedItems(){
-        games = repository.getItems()
+        games = repository.getFavoritedGames()
         delegate?.onFetchCompleted(isEmpty: games.count == 0 ? true : false )
     }
     
