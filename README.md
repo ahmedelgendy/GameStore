@@ -16,12 +16,12 @@ pod install
 
 ## Class Diagram
 
-![High Level Architecture](https://github.com/ahmedelgendy/GamesStore/blob/master/images/class%20diagram.jpg?raw=true)
+![Class Diagram](https://github.com/ahmedelgendy/GamesStore/blob/master/images/class-diagram.jpg?raw=true)
 
 
 ## File Structure 
 
-![High Level Architecture](https://github.com/ahmedelgendy/GamesStore/blob/master/images/app-structure.jpg?raw=true)
+![File Structure](https://github.com/ahmedelgendy/GamesStore/blob/master/images/app-structure.jpg?raw=true)
 
 
 
