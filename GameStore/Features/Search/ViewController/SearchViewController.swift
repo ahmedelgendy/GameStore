@@ -124,7 +124,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
             let cell = collectionView.dequeueReusableCell(with: SearchCollectionViewCell.self, for: indexPath)
             let cellViewModel = viewModel.cellViewModelAt(index: indexPath.row)
             cell.configure(viewModel: cellViewModel)
-            cell.contentView.backgroundColor = cellViewModel.isCellSelected ? R.color.selectedCell() : .white
+            cell.contentView.backgroundColor = cellViewModel.isGameSeen ? R.color.selectedCell() : .white
             return cell
         }
     }
@@ -139,13 +139,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let id = viewModel.gameIdAt(index: indexPath.row)
         let service = GamesService(network: Networking())
         let cache = CacheStorage()
-        let gameRepository = GameRepository(service: service, storage: cache)
-        let seenRepository = SeenItemsRepository(storage: cache)
-        let favoriteRepository = FavoriteRepository(storage: cache)
-        let detailsViewModel = DetailsViewModel(gameId: id,
-                                                repository: gameRepository,
-                                                favoriteRepository: favoriteRepository,
-                                                seenItemsRepository: seenRepository)
+        let repository = GameRepository(service: service, storage: cache)
+        let detailsViewModel = DetailsViewModel(gameId: id, repository: repository)
         let detailsViewController = DetailsViewController(viewModel: detailsViewModel)
         present(detailsViewController, animated: true)
     }

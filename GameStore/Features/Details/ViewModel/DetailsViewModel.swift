@@ -17,17 +17,11 @@ protocol DetailsViewModelDelegate: class {
 class DetailsViewModel {
     
     weak var delegate: DetailsViewModelDelegate?
-    private var favoriteRepository: FavoriteRepositoryProtocol
-    private var seenItemsRepository: SeenItemsRepositoryProtocol
     private var game: GameDetails!
     private var repository: GameRepository
     private var gameId: Int!
     
-    init(gameId: Int, repository: GameRepository,
-         favoriteRepository: FavoriteRepositoryProtocol,
-         seenItemsRepository: SeenItemsRepositoryProtocol) {
-        self.favoriteRepository = favoriteRepository
-        self.seenItemsRepository = seenItemsRepository
+    init(gameId: Int, repository: GameRepository) {
         self.repository = repository
         self.gameId = gameId
     }
@@ -45,7 +39,7 @@ class DetailsViewModel {
     }
     
     var isFavorited: Bool {
-        favoriteRepository.isItemFavorited(id: game.storageId)
+        repository.isFavorited(id: game.storageId)
     }
     
     var favoriteButtonTitle: String {
@@ -61,10 +55,10 @@ class DetailsViewModel {
     }
     
     func favorite() {
-        if favoriteRepository.isItemFavorited(id: game.storageId) {
-            favoriteRepository.removeItem(game)
+        if repository.isFavorited(id: game.storageId) {
+            repository.setUnfavorite(game)
         } else {
-            favoriteRepository.addGame(game)
+            repository.setFavorite(game)
         }
         DispatchQueue.main.async {
             self.delegate?.onFavorited()
@@ -77,7 +71,7 @@ class DetailsViewModel {
                 switch result {
                 case .success(let value):
                     self.game = value
-                    self.seenItemsRepository.markItemAsSeen(id: self.gameId)
+                    self.repository.setSeen(id: self.gameId)
                     self.delegate?.onFetchCompleted()
                 case .failure(let error):
                     self.delegate?.onFetchFailed(reason: error.localizedDescription)

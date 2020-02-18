@@ -38,13 +38,11 @@
 		AF94179023F7F1A300B38C8E /* CacheKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF94178F23F7F1A300B38C8E /* CacheKeys.swift */; };
 		AF9AE87723F2D01C00914BB5 /* LoadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */; };
 		AF9AE87823F2D01C00914BB5 /* LoadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */; };
-		AF9AE87B23F31EAC00914BB5 /* FavoriteRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */; };
 		AF9AE87E23F400A300914BB5 /* CacheStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9AE87D23F400A300914BB5 /* CacheStorage.swift */; };
 		AF9CFD9A23F5CD450061E3F4 /* AlertDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */; };
 		AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */; };
 		AF9CFD9E23F5D96C0061E3F4 /* WebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */; };
 		AF9CFDAB23F60D200061E3F4 /* GameRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFDAA23F60D200061E3F4 /* GameRepository.swift */; };
-		AF9CFDAD23F616980061E3F4 /* SeenItemsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF9CFDAC23F616980061E3F4 /* SeenItemsRepository.swift */; };
 		AFB662EC23F5295500EDBC24 /* GameDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EB23F5295500EDBC24 /* GameDetails.swift */; };
 		AFB662EF23F53AB500EDBC24 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662EE23F53AB500EDBC24 /* GradientView.swift */; };
 		AFB662F123F5419F00EDBC24 /* String+htmlStripped.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */; };
@@ -126,13 +124,11 @@
 		AF94178F23F7F1A300B38C8E /* CacheKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheKeys.swift; sourceTree = "<group>"; };
 		AF9AE87523F2D01C00914BB5 /* LoadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF9AE87623F2D01C00914BB5 /* LoadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadingCollectionViewCell.xib; sourceTree = "<group>"; };
-		AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRepository.swift; sourceTree = "<group>"; };
 		AF9AE87D23F400A300914BB5 /* CacheStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheStorage.swift; sourceTree = "<group>"; };
 		AF9CFD9923F5CD450061E3F4 /* AlertDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDisplay.swift; sourceTree = "<group>"; };
 		AF9CFD9B23F5D96C0061E3F4 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		AF9CFD9C23F5D96C0061E3F4 /* WebViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebViewController.xib; sourceTree = "<group>"; };
 		AF9CFDAA23F60D200061E3F4 /* GameRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRepository.swift; sourceTree = "<group>"; };
-		AF9CFDAC23F616980061E3F4 /* SeenItemsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeenItemsRepository.swift; sourceTree = "<group>"; };
 		AFB662EB23F5295500EDBC24 /* GameDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetails.swift; sourceTree = "<group>"; };
 		AFB662EE23F53AB500EDBC24 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AFB662F023F5419E00EDBC24 /* String+htmlStripped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+htmlStripped.swift"; sourceTree = "<group>"; };
@@ -396,9 +392,7 @@
 		AF9AE88023F4021100914BB5 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				AF9AE87A23F31EAC00914BB5 /* FavoriteRepository.swift */,
 				AF9CFDAA23F60D200061E3F4 /* GameRepository.swift */,
-				AF9CFDAC23F616980061E3F4 /* SeenItemsRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -842,7 +836,6 @@
 				AFD5C01623F291C20076D158 /* Networking.swift in Sources */,
 				AF7F66E923F17779006662A4 /* MainViewController.swift in Sources */,
 				AFB662F423F5583F00EDBC24 /* Notifications.swift in Sources */,
-				AF9CFDAD23F616980061E3F4 /* SeenItemsRepository.swift in Sources */,
 				AFB662EC23F5295500EDBC24 /* GameDetails.swift in Sources */,
 				AF06196923F73C9F00B0A114 /* R.generated.swift in Sources */,
 				AFD5C02423F295430076D158 /* AppConstants.swift in Sources */,
@@ -865,7 +858,6 @@
 				AFB662F123F5419F00EDBC24 /* String+htmlStripped.swift in Sources */,
 				AF7F66B323F17662006662A4 /* AppDelegate.swift in Sources */,
 				AF6F6BE223F19EAF00995123 /* ClassName.swift in Sources */,
-				AF9AE87B23F31EAC00914BB5 /* FavoriteRepository.swift in Sources */,
 				AF9CFD9D23F5D96C0061E3F4 /* WebViewController.swift in Sources */,
 				AF6F6BE623F19F3500995123 /* UICollectionView+register.swift in Sources */,
 				AF2B789423F433E7009C1474 /* SearchCellViewModel.swift in Sources */,

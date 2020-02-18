@@ -17,14 +17,14 @@ class SearchViewModel {
     
     weak var delegate: SearchViewModelDelegate?
 
-    private var repository: GameRepository
+    private var repository: GameRepositoryProtocol
     private var games = [Game]()
     private var throttler = Throttler(delay: 0.7)
     private var searchParams = SearchGamesParameters()
 
     var loadMoreData = false
     
-    init(repository: GameRepository) {
+    init(repository: GameRepositoryProtocol) {
         self.repository = repository
     }
     
@@ -70,8 +70,7 @@ class SearchViewModel {
     }
     
     func cellViewModelAt(index: Int) -> SearchCellViewModel {
-        return SearchCellViewModel(game: self.games[index],
-                                   seenItemsRepository: SeenItemsRepository(storage: CacheStorage()))
+        return SearchCellViewModel(game: self.games[index], repository: repository)
     }
     
     func gameIdAt(index: Int) -> Int {
